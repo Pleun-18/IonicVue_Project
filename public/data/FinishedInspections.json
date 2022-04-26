@@ -1,0 +1,53 @@
+[
+        {
+            "id": 1,
+            "type": "damage",
+            "location": "Invanteriestraat 25",
+            "date": "2022-07-16",
+            "new": true,
+            "sort": "Violence",
+            "action": false, 
+            "description": "Multiple broken windows"
+        },
+        {
+            "id": 2,
+            "type": "maintenance",
+            "location": "Spookstad 17",
+            "date": "2022-01-29",
+            "sort": "wood rot",
+            "action": true,
+            "costs": 1700
+        },
+        {
+            "id": 3,
+            "type": "technical",
+            "location": "De achterhoek 53",
+            "date": "2022-02-21",
+            "sort": "cooling",
+            "malfunction": "heater broken",
+            "procedure": "../public/assets/procedure.pdf",
+            "confirmed": true, 
+            "comment": "heater won't go off normally"
+        },
+        {
+            "id": 4,
+            "type": "modify",
+            "location": "Bakkersweg 98",
+            "date": "2022-02-26",
+            "procedure": "../public/assets/procedure.pdf",
+            "performer": "Huurder",
+            "description": "Change Window(s)",
+            "action": "change", 
+            "comment": "Windows are breaking easily"
+        },
+        {
+            "id": 5,
+            "type": "damage",
+            "location": "Invanteriestraat 25",
+            "date": "2022-03-17",
+            "new": false,
+            "sort": "Willfully",
+            "action": true, 
+            "description": "Discussion with neighbours led to tree on roof"
+        }
+    ]
