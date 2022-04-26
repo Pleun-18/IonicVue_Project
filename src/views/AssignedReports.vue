@@ -7,8 +7,8 @@
 
        <ion-list>
         <ion-item v-for="inspection in filteredInspections" :key="inspection.id">
-          <ion-checkbox slot="start"></ion-checkbox>
-          <ion-label>
+          <!-- <ion-checkbox slot="start"></ion-checkbox> -->
+          <ion-label type="button" class="btn" @click="showModal(index)">
             <p> {{ inspection.date }} </p>
             <h1> {{ inspection.location }} </h1>
             <ion-note> {{ inspection.description }} {{ inspection.comment }} </ion-note>
@@ -16,6 +16,24 @@
           <ion-badge color="success" slot="end"> {{ inspection.type }} </ion-badge>
         </ion-item>
       </ion-list>
+
+      <ModalList v-show="isModalVisible" @close="closeModal" v-for="inspection in inspections" :key="inspection.id"> 
+        
+        <template v-slot:header>
+          <div style="display: flex; justify-content: space-between;">
+            <ion-badge color="success" class="badge-pill"> {{ inspection.type }} </ion-badge>
+            <ion-badge color="danger"> {{ inspection.sort }} </ion-badge>
+          </div>
+          <p>{{ inspection.date }}</p>
+          <h1> {{ inspection.location }} </h1>
+        </template>
+
+        <template v-slot:body>
+          {{ inspection.description }}
+          <ion-badge color="danger"> {{ inspection.costs }} </ion-badge>
+        </template>
+
+      </ModalList>
 
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button>
@@ -32,6 +50,7 @@
   import { add } from '@ionic/vue';
   import { IonContent } from '@ionic/vue';
   import TopHeader from '@/components/TopHeader'
+  import ModalList from '../components/ModalList'
 
   export default defineComponent({
     name: 'AssignedReports', 
@@ -42,10 +61,12 @@
     },
     data(){
       return { 
-        inspections: []
+        inspections: [],
+        isModalVisible: false,
+        selectedInspectionIndex: 0
       }
     },
-    components: { TopHeader, IonContent },
+    components: { TopHeader, IonContent, ModalList },
     async created() {
       fetch("/data/FinishedInspections.json")
           .then(response => response.json())
@@ -59,6 +80,22 @@
           let dateA = new Date(a.date), dateB = new Date(b.date)
           return dateA - dateB
         });
+      },
+      selectedCountry() {
+        return {
+            ...this.inspections[this.selectedInspectionIndex]
+        }
+      }
+    },
+    methods: {
+      showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      },
+      selectCountry(index) {
+          this.selectedInspectionIndex = index;
       }
     }
   });
