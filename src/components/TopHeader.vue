@@ -1,5 +1,6 @@
 <template>
     <ion-page>
+
         <ion-header class="header">
             <ion-toolbar class="toolbar">
                 <ion-buttons slot="secondary">
@@ -18,8 +19,9 @@
                 </ion-title>
             </ion-toolbar>
         </ion-header>
+        
     </ion-page>
-</template>
+</template> 
 
 <script>
 import { defineComponent } from 'vue';
