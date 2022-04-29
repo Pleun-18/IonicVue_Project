@@ -5,6 +5,8 @@
     
     <ion-content :fullscreen="true">
 
+      <!-- <div> {{ test }} </div> -->
+
        <ion-list>
         <ion-item v-for="inspection in filteredInspections" :key="inspection.id">
           <!-- <ion-checkbox slot="start"></ion-checkbox> -->
@@ -51,6 +53,7 @@
   import { IonContent } from '@ionic/vue';
   import TopHeader from '@/components/TopHeader'
   import ModalList from '../components/ModalList'
+  // import myService from '@/services/myJsonService.js';
 
   export default defineComponent({
     name: 'AssignedReports', 
@@ -63,12 +66,13 @@
       return { 
         inspections: [],
         isModalVisible: false,
-        selectedInspectionIndex: 0
+        selectedInspectionIndex: 0 
+        // test: myService.myMethod()
       }
     },
     components: { TopHeader, IonContent, ModalList },
     async created() {
-      fetch("/data/FinishedInspections.json")
+      fetch("http://localhost:3000/inspections")
           .then(response => response.json())
           .then(data => this.inspections = data)
           .catch(err => console.log(err.message))
