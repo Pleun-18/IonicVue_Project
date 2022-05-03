@@ -2,21 +2,21 @@
   "inspections": [
     {
       "id": 1,
-      "type": "damage",
+      "name": "damage",
       "location": "Invanteriestraat 25",
       "date": "2022-07-16",
       "new": true,
-      "sort": "Violence",
+      "type": "Violence",
       "action": false,
       "description": "Multiple broken windows...",
       "comment": "Window needs repearing"
     },
     {
       "id": 2,
-      "type": "maintenance",
+      "name": "maintenance",
       "location": "Spookstad 17",
       "date": "2022-01-29",
-      "sort": "wood rot",
+      "type": "wood rot",
       "action": true,
       "costs": 1700,
       "description": "Window glass is not thick enought, needs replacement...",
@@ -24,10 +24,10 @@
     },
     {
       "id": 3,
-      "type": "technical",
+      "name": "technical",
       "location": "De achterhoek 53",
       "date": "2022-02-21",
-      "sort": "cooling",
+      "type": "cooling",
       "malfunction": "heater broken",
       "procedure": "../public/assets/procedure.pdf",
       "confirmed": true,
@@ -36,7 +36,7 @@
     },
     {
       "id": 4,
-      "type": "modify",
+      "name": "modify",
       "location": "Bakkersweg 98",
       "date": "2022-02-26",
       "procedure": "../public/assets/procedure.pdf",
@@ -47,14 +47,48 @@
     },
     {
       "id": 5,
-      "type": "damage",
+      "name": "damage",
       "location": "Invanteriestraat 25",
       "date": "2022-03-17",
       "new": false,
-      "sort": "Willfully",
+      "type": "Willfully",
       "action": true,
       "description": "Discussion with neighbours led to tree on roof",
       "comment": "Roof needs repearing"
     }
-  ]
+  ],
+  "reports": [
+    {
+      "id": 1,
+      "name": "report-1",
+      "src": "normbladen.pdf"
+    },
+    {
+      "id": 2,
+      "name": "report-2",
+      "src": "testprocedures.pdf"
+    },
+    {
+      "id": 3,
+      "name": "report-3",
+      "src": "handleiding.pdf"
+    }
+  ],
+  "documents": [
+      {
+        "id": 1,
+        "name": "document-1",
+        "src": "normbladen.pdf"
+      },
+      {
+        "id": 2,
+        "name": "document-2",
+        "src": "testprocedures.pdf"
+      },
+      {
+        "id": 3,
+        "name": "document-3",
+        "src": "handleiding.pdf"
+      }
+    ]
 }
