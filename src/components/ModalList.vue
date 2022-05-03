@@ -20,12 +20,13 @@
           </button>
         </header>
 
-        <section class="modal-body"
-          id="modalDescription">
-          <slot name="body">
-            This is the default body!
-          </slot>
-        </section>
+        <h2>{{ inspection.type }}</h2>
+        <ul class="list-group">
+            <li class="list-group-item">{{ inspection.name}}</li>
+            <li class="list-group-item">{{ inspection.location}}</li>
+            <li class="list-group-item">{{ inspection.description}}</li>
+            <li class="list-group-item">{{ inspection.comment}}</li>
+        </ul>
       </div>
     </div>
   </transition>
@@ -37,6 +38,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
     name: 'ModalList',
+    props: ['inspection'],
     methods: {
       close() {
         this.$emit('close');
@@ -73,20 +75,17 @@ export default defineComponent({
   .modal-footer {
     padding: 15px;
     display: flex;
-    line-height: 0.3em;
+    flex-direction: column;
   }
 
   .modal-header {
     position: relative;
     border-bottom: 1px solid #eeeeee;
     color: #4AAE9B;
-    justify-content: space-between;
   }
 
   .modal-footer {
     border-top: 1px solid #eeeeee;
-    flex-direction: column;
-    justify-content: flex-end;
   }
 
   .modal-body {

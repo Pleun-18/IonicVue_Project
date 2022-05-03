@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 // import { RouteRecordRaw } from 'vue-router';
 import TabsPage from '../views/TabsPage.vue'
-// import { Service } from './service';
+// import { Service } from './services/service';
+// import Vue from 'vue';
+// import App from 'vue';
 
 const routes = [
   {
@@ -46,6 +48,6 @@ const router = createRouter({
 //   render: h => h(App)
 // }).$mount('#app')
 
-// Service.prototype.$router = vue.router;
+// Service.prototype.$vue = vue;
 
 export default router
