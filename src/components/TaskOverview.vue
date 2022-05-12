@@ -1,17 +1,17 @@
 <template>
-  <ion-page>
-    <ion-router-outlet></ion-router-outlet>
+
+<div id="container">
     
     <ion-content :fullscreen="true">
     
       <ion-grid>
         <ion-row class="ion-align-items-center">
           <ion-col col-6 class="task_img">
-            <router-link to="/tabs/assigned">
-            <div>
-              <ion-icon src="./assets/tasks.svg"></ion-icon>
-              <p>Assigned reports</p>
-            </div>
+            <router-link to="assigned" exact>
+              <div>
+                <ion-icon src="./assets/tasks.svg"></ion-icon>
+                <p>Assigned reports</p>
+              </div>
             </router-link>
           </ion-col>
           <ion-col col-6 class="task_img">
@@ -39,7 +39,7 @@
       </ion-grid>
 
     </ion-content>
-  </ion-page>
+    </div>
 </template>
 
 <script lang="js">
@@ -48,11 +48,18 @@ import { IonContent } from '@ionic/vue';
 
 export default  defineComponent({
   name: 'TaskOverview',
-  components: { IonContent }
+  components: { IonContent }, 
+  methods: {
+    // showCountry(country){
+    //   console.log('navigeren naar: ', ion-icon.name);
+    //   this.$router.push('/assigned')
+    // }
+  }
 })
 </script>
 
 <style scoped>
+
   ion-icon{
     font-size: 100px !important;
     color: rgb(35, 35, 35);
@@ -63,12 +70,6 @@ export default  defineComponent({
     cursor: pointer;
   }
 
-  /* ion-grid{
-
-  }
-  ion-row{
-    
-  } */
   ion-col{
     box-shadow: 0px 2px 6px gray;
     border-radius: 5px;

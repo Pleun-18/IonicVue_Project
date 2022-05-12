@@ -20,7 +20,7 @@
           </button>
         </header>
 
-        <h2>{{ inspection.type }}</h2>
+        <h2  @click="test">{{ inspection.type }}</h2>
         <ul class="list-group">
             <li class="list-group-item">{{ inspection.name}}</li>
             <li class="list-group-item">{{ inspection.location}}</li>
@@ -43,6 +43,12 @@ export default defineComponent({
       close() {
         this.$emit('close');
       },
+      pushId() {
+        this.$emit('pushId');
+      }, 
+      test(){
+        console.log("hallo" + this)
+      }
     },
 })
 </script>
@@ -51,7 +57,7 @@ export default defineComponent({
   .modal-backdrop {
     position: fixed;
     top: 0;
-    bottom: 0;
+    bottom: -60;
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.2);
