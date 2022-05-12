@@ -1,5 +1,7 @@
 <template>
   <ion-page>
+    <TopHeader />
+    
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
       <ion-tab-bar slot="bottom">
@@ -26,10 +28,11 @@
 import { defineComponent } from 'vue';
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
 import { build, search, alert } from 'ionicons/icons';
+import TopHeader from '@/components/TopHeader';
 
 export default defineComponent({
   name: 'TabsPage',
-  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet },
+  components: { TopHeader, IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet },
   setup() {
     return {
       build,
@@ -39,3 +42,10 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+  /* .router-link-active{
+    background-color: red;
+    color: blue;
+  } */
+</style>

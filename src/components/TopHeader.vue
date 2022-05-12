@@ -5,6 +5,7 @@
             <ion-toolbar class="toolbar">
                 <ion-buttons slot="secondary">
                     <ion-button color="primary">
+                        <ion-badge color="light">32</ion-badge>
                         <ion-icon slot="icon-only" :icon="notifications"></ion-icon>
                     </ion-button>
                     <ion-button color="primary">
@@ -44,5 +45,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+  .header{
+    background: rgb(35, 35, 35);
+    padding: 15px 0 15px 0;
+  }
 
 </style>

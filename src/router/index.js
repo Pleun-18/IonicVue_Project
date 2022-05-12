@@ -32,6 +32,7 @@ const routes = [
       },
       {
         path: 'assigned',
+        name: 'assigned',
         component: () => import('@/views/AssignedReports.vue')
       }
     ]

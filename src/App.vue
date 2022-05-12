@@ -18,15 +18,20 @@ export default defineComponent({
 </script>
 
 <style>
+
+  #container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 12%;
+    transform: translateY(-50%);
+  }
   .logo{
     width: 180px;
     z-index: 99;
   }
-
-  .header{
-    background: rgb(35, 35, 35);
-    padding: 15px 0 15px 0;
-  }
+  
   .toolbar{
     --background: rgb(35, 35, 35);
   }
