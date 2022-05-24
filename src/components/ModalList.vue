@@ -1,32 +1,26 @@
 <template>
   <transition name="modal-fade">
     <div class="modal-backdrop">
-      <div class="modal"
-        role="dialog"
-        aria-labelledby="modalTitle"
-        aria-describedby="modalDescription">
-        <header class="modal-header"
-          id="modalTitle">
-          <slot name="header">
-            This is the default title!
-          </slot>
-          <button
-            type="button"
-            class="btn-close"
-            @click="close"
-            aria-label="Close modal"
-          >
-            x
-          </button>
-        </header>
+      <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
 
-        <h2  @click="test">{{ inspection.type }}</h2>
+        <button type="button" class="btn-close" @click="close" aria-label="Close modal"> x </button>
+
+        <h2  @click="test">{{ inspection.location }}</h2>
+
+        <ion-icon name="create"></ion-icon>
+
+        <div>
+          <ion-chip>{{ inspection.name }}</ion-chip>
+          <ion-chip>{{ inspection.type }}</ion-chip>
+        </div>
+        
         <ul class="list-group">
-            <li class="list-group-item">{{ inspection.name}}</li>
-            <li class="list-group-item">{{ inspection.location}}</li>
             <li class="list-group-item">{{ inspection.description}}</li>
             <li class="list-group-item">{{ inspection.comment}}</li>
         </ul>
+
+        <!-- <ClientLogin /> -->
+
       </div>
     </div>
   </transition>
@@ -35,10 +29,18 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { create } from 'ionicons/icons';
+// import { create } from '@ionic/vue';
 
 export default defineComponent({
     name: 'ModalList',
     props: ['inspection'],
+    // components: {
+    //   create
+    // },
+    setup() {
+      create
+    },
     methods: {
       close() {
         this.$emit('close');
@@ -54,12 +56,17 @@ export default defineComponent({
 </script>
 
 <style scoped>
+  .list-group {
+    text-align: left;
+    list-style-type: circle;
+  }
+
   .modal-backdrop {
     position: fixed;
-    top: 0;
-    bottom: -60;
     left: 0;
+    top: 0;
     right: 0;
+    height: 650px;
     background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
@@ -68,7 +75,7 @@ export default defineComponent({
 
   .modal {
     background: #FFFFFF;
-    width: 400px;
+    width: 320px;
     height: 300px;
     border-radius: 5px;
     box-shadow: 2px 2px 15px 1px;
@@ -101,10 +108,10 @@ export default defineComponent({
 
   .btn-close {
     position: absolute;
-    top: 0;
-    right: 0;
+    float: right;
+    margin-inline-start: 10px;
     border: none;
-    font-size: 20px;
+    font-size: 30px;
     padding: 10px;
     cursor: pointer;
     font-weight: bold;

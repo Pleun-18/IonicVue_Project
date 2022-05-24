@@ -5,13 +5,13 @@
             <ion-toolbar class="toolbar">
                 <ion-buttons slot="secondary">
                     <ion-button color="primary">
-                        <ion-badge color="light">32</ion-badge>
+                        <ion-badge color="light">7</ion-badge>
                         <ion-icon slot="icon-only" :icon="notifications"></ion-icon>
                     </ion-button>
                     <ion-button color="primary">
                         <ion-icon :icon="settings"></ion-icon>
                     </ion-button>
-                    <ion-button color="primary">
+                    <ion-button color="primary" @click="openModal">
                         <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
                     </ion-button>
                 </ion-buttons>
@@ -20,17 +20,21 @@
                 </ion-title>
             </ion-toolbar>
         </ion-header>
+
+        <!-- <ClientLogin /> -->
         
     </ion-page>
 </template> 
 
 <script>
-import { defineComponent } from 'vue';
-import { IonButton, IonButtons, IonIcon } from '@ionic/vue';
+// import { defineComponent } from 'vue';
+import { IonButton, IonButtons, IonIcon, modalController } from '@ionic/vue';
 import { helpCircle, personCircle, settings, notifications } from 'ionicons/icons';
 import { IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
+import ClientLogin from "./ClientLogin.vue"
+// import ClientLogin from '../components/ClientLogin';
 
-export default defineComponent({
+export default {
     name: 'TopHeader',
     components: { IonHeader, IonToolbar, IonTitle, IonButton, IonButtons, IonIcon },
     setup() {
@@ -40,8 +44,19 @@ export default defineComponent({
       personCircle,
       notifications
     }
-  }
-})
+  },
+  methods: {
+    async openModal() {
+      const modal = await modalController
+        .create({
+          component: ClientLogin,
+          cssClass: 'client-login-class'
+        })
+      return modal.present();
+    },
+  },
+}
+
 </script>
 
 <style scoped>
