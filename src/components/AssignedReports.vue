@@ -1,7 +1,15 @@
 <template>
 
-  <div id="container">
-    <ion-page>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button @click="dismissModal">
+              <ion-icon :icon="close" />
+            </ion-button>
+          </ion-buttons>
+          <ion-title>Current Assigned Reports</ion-title>
+        </ion-toolbar>
+      </ion-header>
       
       <ion-content :fullscreen="true">
 
@@ -19,14 +27,14 @@
         <ModalList v-if="selectedInspection" :inspection="selectedInspection" v-show="isModalVisible" @close="closeModal"></ModalList>
         
       </ion-content>
-    </ion-page>
-  </div>
+
+
 </template>
 
 <script lang="js">
   import { defineComponent } from 'vue';
-  import { add } from 'ionicons/icons';
-  import { IonContent } from '@ionic/vue';
+  import { add, close } from 'ionicons/icons';
+  import { IonContent, modalController } from '@ionic/vue';
   // import TopHeader from '@/components/TopHeader';
   import ModalList from '../components/ModalList';
   import MyService from '@/services/my.service.js';
@@ -35,7 +43,8 @@
     name: 'AssignedReports', 
     setup() {
       return {
-        add
+        add, 
+        close
       }
     },
     components: { IonContent, ModalList },
@@ -85,6 +94,9 @@
         // const modalContent = Object.entries();
         this.selectedInspectionIndex = inspectionId - 1;
         console.log(inspectionId);
+      }, 
+      dismissModal() {
+        modalController.dismiss({dismissed: true});
       }
     },
     mounted() {

@@ -1,14 +1,21 @@
 <template>
   <transition name="modal-fade">
     <div class="modal-backdrop">
-      <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-
-        <button type="button" class="btn-close" @click="close" aria-label="Close modal"> x </button>
+      <div class="modal"
+        role="dialog"
+        aria-labelledby="modalTitle"
+        aria-describedby="modalDescription">
+          
+          <button
+            type="button"
+            class="btn-close"
+            @click="close"
+            aria-label="Close modal"
+          >
+            x
+          </button>
 
         <h2  @click="test">{{ inspection.location }}</h2>
-
-        <ion-icon name="create"></ion-icon>
-
         <div>
           <ion-chip>{{ inspection.name }}</ion-chip>
           <ion-chip>{{ inspection.type }}</ion-chip>
@@ -18,9 +25,6 @@
             <li class="list-group-item">{{ inspection.description}}</li>
             <li class="list-group-item">{{ inspection.comment}}</li>
         </ul>
-
-        <!-- <ClientLogin /> -->
-
       </div>
     </div>
   </transition>
@@ -29,18 +33,10 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { create } from 'ionicons/icons';
-// import { create } from '@ionic/vue';
 
 export default defineComponent({
     name: 'ModalList',
     props: ['inspection'],
-    // components: {
-    //   create
-    // },
-    setup() {
-      create
-    },
     methods: {
       close() {
         this.$emit('close');
@@ -66,9 +62,9 @@ export default defineComponent({
     left: 0;
     top: 0;
     right: 0;
-    height: 650px;
     background-color: rgba(0, 0, 0, 0.2);
     display: flex;
+    height: 500px;
     justify-content: center;
     align-items: center;
   }
