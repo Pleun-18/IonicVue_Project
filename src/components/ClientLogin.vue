@@ -1,11 +1,13 @@
 <template>
   <ion-header>
     <ion-toolbar>
+      
       <ion-buttons slot="start">
         <ion-button @click="closeModal()">
           <ion-icon :icon="close" />
         </ion-button>
       </ion-buttons>
+
       <ion-title>Client Login Modal</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -26,18 +28,15 @@
 </template>
 
 <script>
-import { IonContent, IonHeader, IonTitle, IonToolbar, modalController } from '@ionic/vue';
+import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/vue';
 import { close } from 'ionicons/icons';
 import { defineComponent } from 'vue';
+import mixins from '../mixins/mixins.js';
 
 export default defineComponent({
   name: 'ClientLogin',
-  components: { IonContent, IonHeader, IonTitle, IonToolbar }, 
-  methods: {
-    closeModal() {
-      modalController.dismiss({dismissed: true});
-    }
-  },
+  components: { IonContent, IonHeader, IonTitle, IonToolbar },
+  mixins: [mixins],
   setup() {
     return{
       close

@@ -3,7 +3,14 @@
   <div id="container">
     <ion-page>
       
-      <ion-content :fullscreen="true">
+      <ion-content :fullscreen="true" scroll-y="false">
+        <ion-refresher slot="fixed">
+
+        <!-- <ion-buttons>
+          <ion-button @click="closeModal()">
+            <ion-icon :icon="close" />
+          </ion-button>
+        </ion-buttons> -->
 
         <ion-list>
           <ion-item v-for="inspection in this.sortedInspections" :key="inspection.id" :data-inspection-id="inspection.id" @click="selectInspection(inspection.id), showModal()">
@@ -16,6 +23,8 @@
           </ion-item>
         </ion-list>
 
+      </ion-refresher>
+
         <ModalList v-if="selectedInspection" :inspection="selectedInspection" v-show="isModalVisible" @close="closeModal"></ModalList>
         
       </ion-content>
@@ -25,19 +34,22 @@
 
 <script lang="js">
   import { defineComponent } from 'vue';
-  import { add } from 'ionicons/icons';
+  // import { add } from 'ionicons/icons';
   import { IonContent } from '@ionic/vue';
+  import mixins from '../mixins/mixins.js';
+  // import { close } from 'ionicons/icons';
   // import TopHeader from '@/components/TopHeader';
   import ModalList from '../components/ModalList';
   import MyService from '@/services/my.service.js';
 
   export default defineComponent({
     name: 'AssignedReports', 
-    setup() {
-      return {
-        add
-      }
-    },
+    // setup() {
+    //   return {
+    //     add, 
+    //     close
+    //   }
+    // },
     components: { IonContent, ModalList },
     /**
      * @description fetches inspectiondata saves it in class and returns data
@@ -52,6 +64,7 @@
         selectedInspectionIndex: 0
       };
     },
+    mixins: [mixins],
     computed: {
       //returned information aftering clicking
       selectedInspection() {

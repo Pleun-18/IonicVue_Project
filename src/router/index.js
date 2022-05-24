@@ -22,11 +22,11 @@ const routes = [
         path: 'tab1',
         component: () => import('@/views/TaskTab.vue')
       },
-      {
-        path: 'tab1/assigned',
-        // name: 'assigned',
-        component: () => import('@/views/AssignedReports.vue')
-      },
+      // {
+      //   path: 'tab1/assigned',
+      //   // name: 'assigned',
+      //   component: () => import('@/components/AssignedReports.vue')
+      // },
       {
         path: 'tab2',
         component: () => import('@/views/SearchTab.vue')

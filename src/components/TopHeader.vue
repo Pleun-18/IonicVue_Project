@@ -20,21 +20,18 @@
                 </ion-title>
             </ion-toolbar>
         </ion-header>
-
-        <!-- <ClientLogin /> -->
         
     </ion-page>
 </template> 
 
 <script>
-// import { defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 import { IonButton, IonButtons, IonIcon, modalController } from '@ionic/vue';
 import { helpCircle, personCircle, settings, notifications } from 'ionicons/icons';
 import { IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
 import ClientLogin from "./ClientLogin.vue"
-// import ClientLogin from '../components/ClientLogin';
 
-export default {
+export default defineComponent ({
     name: 'TopHeader',
     components: { IonHeader, IonToolbar, IonTitle, IonButton, IonButtons, IonIcon },
     setup() {
@@ -55,7 +52,7 @@ export default {
       return modal.present();
     },
   },
-}
+})
 
 </script>
 
