@@ -46,7 +46,7 @@ export default defineComponent({
     position: absolute;
     left: 0;
     right: 0;
-    top: 12%;
+    top: 15%;
     transform: translateY(-50%);
   }
   .logo{
