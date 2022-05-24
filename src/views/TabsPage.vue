@@ -1,6 +1,6 @@
 <template>
+
   <ion-page>
-    <TopHeader />
     
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
@@ -21,18 +21,20 @@
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
+
   </ion-page>
+
 </template>
 
 <script lang="js">
 import { defineComponent } from 'vue';
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
 import { build, search, alert } from 'ionicons/icons';
-import TopHeader from '@/components/TopHeader';
+// import TopHeader from '@/components/TopHeader';
 
 export default defineComponent({
   name: 'TabsPage',
-  components: { TopHeader, IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet },
+  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet },
   setup() {
     return {
       build,

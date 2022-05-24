@@ -1,5 +1,6 @@
 <template>
   <ion-app>
+    <TopHeader />
     <ion-router-outlet />
   </ion-app>
 </template>
@@ -7,17 +8,38 @@
 <script lang="js">
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
 import { defineComponent } from 'vue';
+import TopHeader from '@/components/TopHeader';
+// import ClientLogin from "./components/ClienLogin"
 
 export default defineComponent({
   name: 'App',
   components: {
     IonApp,
-    IonRouterOutlet
+    IonRouterOutlet, 
+    TopHeader
   }
 });
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Titillium+Web:wght@300;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Titillium+Web:wght@300;600&display=swap');
+
+  h1 {
+    font-size: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-family: 'Titillium Web', sans-serif;
+  }
+
+  p {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+  }
 
   #container {
     text-align: center;

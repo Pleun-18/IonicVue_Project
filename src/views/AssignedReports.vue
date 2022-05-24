@@ -11,7 +11,6 @@
             <ion-label type="button" class="btn">
               <p> {{ inspection.date }} </p>
               <h1> {{ inspection.location }} </h1>
-              <ion-note> {{ inspection.description }} {{ inspection.comment }} </ion-note>
             </ion-label>
             <ion-badge color="success" slot="end"> {{ inspection.name }} </ion-badge>
           </ion-item>
@@ -56,7 +55,7 @@
     computed: {
       //returned information aftering clicking
       selectedInspection() {
-        console.log('selected Inspection')
+        console.log('Inspection selected')
         return {
             ...this.inspections[this.selectedInspectionIndex]
         }
@@ -83,8 +82,9 @@
       },
       //select the inspection on-clicking
       selectInspection(inspectionId) {
-          this.selectedInspectionIndex = inspectionId - 1;
-          console.log(inspectionId);
+        // const modalContent = Object.entries();
+        this.selectedInspectionIndex = inspectionId - 1;
+        console.log(inspectionId);
       }
     },
     mounted() {

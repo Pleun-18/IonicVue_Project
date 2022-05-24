@@ -23,17 +23,17 @@ const routes = [
         component: () => import('@/views/TaskTab.vue')
       },
       {
+        path: 'tab1/assigned',
+        // name: 'assigned',
+        component: () => import('@/views/AssignedReports.vue')
+      },
+      {
         path: 'tab2',
         component: () => import('@/views/SearchTab.vue')
       },
       {
         path: 'tab3',
         component: () => import('@/views/InfoTab.vue')
-      },
-      {
-        path: 'assigned',
-        name: 'assigned',
-        component: () => import('@/views/AssignedReports.vue')
       }
     ]
   }
