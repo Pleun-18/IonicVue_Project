@@ -2,12 +2,10 @@
   <ion-page>
 
     <div id="container">
-    
+
       <ion-content :fullscreen="true">
       
         <TaskOverview />
-
-      </ion-content>
 
     </div>
 
