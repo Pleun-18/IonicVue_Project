@@ -3,7 +3,7 @@
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button @click="dismissModal">
+            <ion-button @click="dismissModal()">
               <ion-icon :icon="close" />
             </ion-button>
           </ion-buttons>
@@ -33,8 +33,9 @@
 
 <script lang="js">
   import { defineComponent } from 'vue';
+  import mixins from '/src/mixins/mixins.js'
   import { add, close } from 'ionicons/icons';
-  import { IonContent, modalController } from '@ionic/vue';
+  import { IonContent } from '@ionic/vue';
   // import TopHeader from '@/components/TopHeader';
   import ModalList from '../components/ModalList';
   import MyService from '@/services/my.service.js';
@@ -47,6 +48,7 @@
         close
       }
     },
+    mixins: [mixins],
     components: { IonContent, ModalList },
     /**
      * @description fetches inspectiondata saves it in class and returns data
@@ -94,9 +96,6 @@
         // const modalContent = Object.entries();
         this.selectedInspectionIndex = inspectionId - 1;
         console.log(inspectionId);
-      }, 
-      dismissModal() {
-        modalController.dismiss({dismissed: true});
       }
     },
     mounted() {

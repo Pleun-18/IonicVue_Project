@@ -34,7 +34,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'ClientLogin',
   components: { IonContent, IonHeader, IonTitle, IonToolbar },
-  mixinx: [mixins],
+  mixins: [mixins],
   setup() {
     return{
       close

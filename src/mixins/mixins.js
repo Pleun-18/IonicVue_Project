@@ -5,7 +5,7 @@ import { modalController } from '@ionic/vue';
 
 export default { 
     methods: {
-        dismiessModal() {
+        dismissModal() {
             modalController.dismiss({dismissed: true});
         }
     }
