@@ -7,12 +7,12 @@
       <ion-grid>
         <ion-row class="ion-align-items-center">
           <ion-col col-6 class="task_img">
-            <!-- <router-link to="tab1/assigned" exact> -->
               <div @click="openModal">
+            <router-link to="tab1/assigned" exact>
+              <div>
                 <ion-icon src="./assets/tasks.svg"></ion-icon>
                 <p>Assigned reports</p>
               </div>
-            <!-- </router-link> -->
           </ion-col>
           <ion-col col-6 class="task_img">
             <div>
