@@ -78,7 +78,7 @@
         console.log(this.inspections);
         if (!this.inspections) return;
         this.sortedInspections = [...this.inspections];
-        console.log(this.sortedInspections);
+        console.log("These are sorted: " + this.sortedInspections);
         this.sortedInspections.sort(function (a, b) {
           let dateA = new Date(a.date);
           let dateB = new Date(b.date);
