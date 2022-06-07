@@ -7,7 +7,7 @@
       <ion-grid>
         <ion-row class="ion-align-items-center">
           <ion-col col-6 class="task_img">
-              <div @click="openModal">
+              <div @click="fetchInspections">
                 <div>
                   <ion-icon src="./assets/tasks.svg"></ion-icon>
                   <p>Assigned reports</p>
@@ -15,7 +15,7 @@
               </div>
           </ion-col>
           <ion-col col-6 class="task_img">
-            <div>
+            <div @click="fetchReports">
               <ion-icon src="../assets/completed.svg"></ion-icon>
               <p>Finished Reports</p>
             </div>
@@ -24,13 +24,13 @@
 
         <ion-row>
           <ion-col col-6 class="task_img">
-            <div>
+            <div @click="fetchKnowledge">
               <ion-icon src="../assets/knowledge.svg"></ion-icon>
               <p>knowledge base</p>
             </div>
           </ion-col>
           <ion-col col-6 class="task_img">
-            <div>
+            <div @click="fetchSettings">
               <ion-icon src="../assets/settings.svg"></ion-icon>
               <p>Settings</p>
             </div>
@@ -46,16 +46,41 @@
 import { defineComponent } from 'vue';
 import { IonContent, modalController } from '@ionic/vue';
 import AssignedReports from "./AssignedReports.vue"
+import tryInspectionStore from "./tryInspectionStore.vue"
 
 export default  defineComponent({
   name: 'TaskOverview',
   components: { IonContent }, 
   methods: {
-    async openModal() {
+    async fetchInspections() {
       const modal = await modalController
         .create({
           component: AssignedReports,
+          cssClass: 'inspections-class'
+        })
+      return modal.present();
+    },
+    async fetchReports() {
+      const modal = await modalController
+        .create({
+          component: tryInspectionStore,
           cssClass: 'reports-class'
+        })
+      return modal.present();
+    },
+    async fetchKnowledge() {
+      const modal = await modalController
+        .create({
+          component: AssignedReports,
+          cssClass: 'knowledge-class'
+        })
+      return modal.present();
+    },
+    async fetchSettings() {
+      const modal = await modalController
+        .create({
+          component: AssignedReports,
+          cssClass: '-class'
         })
       return modal.present();
     },

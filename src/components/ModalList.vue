@@ -5,7 +5,7 @@
         role="dialog"
         aria-labelledby="modalTitle"
         aria-describedby="modalDescription">
-          
+        <div>
           <button
             type="button"
             class="btn-close"
@@ -14,8 +14,8 @@
           >
             x
           </button>
-
-        <h2  @click="test">{{ inspection.location }}</h2>
+           <h2  @click="test">{{ inspection.location }}</h2>
+        </div>
         <div>
           <ion-chip>{{ inspection.name }}</ion-chip>
           <ion-chip>{{ inspection.type }}</ion-chip>
@@ -64,7 +64,7 @@ export default defineComponent({
     right: 0;
     background-color: rgba(0, 0, 0, 0.2);
     display: flex;
-    height: 500px;
+    height: 750px;
     justify-content: center;
     align-items: center;
   }
@@ -77,6 +77,7 @@ export default defineComponent({
     box-shadow: 2px 2px 15px 1px;
     overflow-x: auto;
     display: flex;
+    padding: 15px;
     flex-direction: column;
   }
 
@@ -103,12 +104,9 @@ export default defineComponent({
   }
 
   .btn-close {
-    position: absolute;
     float: right;
-    margin-inline-start: 10px;
     border: none;
     font-size: 30px;
-    padding: 10px;
     cursor: pointer;
     font-weight: bold;
     color: #4AAE9B;
