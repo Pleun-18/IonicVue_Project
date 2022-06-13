@@ -13,9 +13,7 @@
     <ion-list>
       <ion-item>Profile</ion-item>
       <ion-item>Settings</ion-item>
-      <ion-item>
-        <ion-button color="secondary">Login</ion-button>
-      </ion-item>
+      <AuthNav />
     </ion-list>
   </ion-content>
 </template>
@@ -25,10 +23,11 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/vue';
 import mixins from '/src/mixins/mixins.js'
 import { close } from 'ionicons/icons';
 import { defineComponent } from 'vue';
+import AuthNav from '@/components/AuthNav'
 
 export default defineComponent({
   name: 'ClientLogin',
-  components: { IonContent, IonHeader, IonTitle, IonToolbar },
+  components: { IonContent, IonHeader, IonTitle, IonToolbar, AuthNav },
   mixins: [mixins],
   setup() {
     return{
