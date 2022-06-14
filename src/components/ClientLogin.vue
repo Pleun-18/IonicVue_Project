@@ -13,9 +13,10 @@
     <ion-list>
       <ion-item>Profile</ion-item>
       <ion-item>Settings</ion-item>
-      <AuthNav />
     </ion-list>
   </ion-content>
+  <AuthNav />
+  <button @click="login" style="padding: 20px;">Log in</button>
 </template>
 
 <script>
@@ -23,7 +24,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/vue';
 import mixins from '/src/mixins/mixins.js'
 import { close } from 'ionicons/icons';
 import { defineComponent } from 'vue';
-import AuthNav from '@/components/AuthNav'
+import AuthNav from '@/components/AuthenticationButton'
 
 export default defineComponent({
   name: 'ClientLogin',
@@ -33,7 +34,12 @@ export default defineComponent({
     return{
       close
     }
-  }
+  }, 
+  // methods: {
+  //   login() {
+  //     this.$auth0.loginWithRedirect();
+  //   },
+  // },
 });
 </script>
 
