@@ -7,7 +7,7 @@
       <ion-grid>
         <ion-row class="ion-align-items-center">
           <ion-col col-6 class="task_img">
-              <div @click="fetchInspections">
+              <div @click="fetchReports">
                 <div>
                   <ion-icon src="./assets/tasks.svg"></ion-icon>
                   <p>Assigned reports</p>
@@ -45,8 +45,11 @@
 <script lang="js">
 import { defineComponent } from 'vue';
 import { IonContent, modalController } from '@ionic/vue';
-import AssignedReports from "./AssignedReports.vue"
-import tryInspectionStore from "./tryInspectionStore.vue"
+// import AssignedReports from "./AssignedReports.vue"
+import InspectionStore from "./InspectionStore"
+import FinishedReports from "./FinishedReports"
+import KnowledgeBase from "./KnowledgeBase"
+import SettingsOverview from "./SettingsOverview"
 
 export default  defineComponent({
   name: 'TaskOverview',
@@ -55,7 +58,7 @@ export default  defineComponent({
     async fetchInspections() {
       const modal = await modalController
         .create({
-          component: AssignedReports,
+          component: InspectionStore,
           cssClass: 'inspections-class'
         })
       return modal.present();
@@ -63,7 +66,7 @@ export default  defineComponent({
     async fetchReports() {
       const modal = await modalController
         .create({
-          component: tryInspectionStore,
+          component: FinishedReports,
           cssClass: 'reports-class'
         })
       return modal.present();
@@ -71,7 +74,7 @@ export default  defineComponent({
     async fetchKnowledge() {
       const modal = await modalController
         .create({
-          component: AssignedReports,
+          component: KnowledgeBase,
           cssClass: 'knowledge-class'
         })
       return modal.present();
@@ -79,8 +82,8 @@ export default  defineComponent({
     async fetchSettings() {
       const modal = await modalController
         .create({
-          component: AssignedReports,
-          cssClass: '-class'
+          component: SettingsOverview,
+          cssClass: 'settings-class'
         })
       return modal.present();
     },

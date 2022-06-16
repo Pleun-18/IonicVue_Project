@@ -72,7 +72,7 @@
   import { IonFabButton } from '@ionic/vue';
 
     export default {
-        name: "tryInspectionStore",
+        name: "InspectionsStore",
         setup() {
             return {
                 add, 

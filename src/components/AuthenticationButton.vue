@@ -11,6 +11,6 @@
 
   export default {
     name: 'AuthenticationButton',
-    components: { LogoutButton, LoginButton },
+    components: { LogoutButton, LoginButton }
   };
 </script>
