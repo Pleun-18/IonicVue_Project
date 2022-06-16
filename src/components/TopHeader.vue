@@ -30,7 +30,6 @@ import { IonButton, IonButtons, IonIcon, modalController } from '@ionic/vue';
 import { helpCircle, personCircle, settings, notifications } from 'ionicons/icons';
 import { IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
 import ClientLogin from "./ClientLogin.vue";
-// import ClientLogin from '../components/ClientLogin';
 
 export default {
     name: 'TopHeader',

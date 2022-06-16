@@ -12,22 +12,7 @@ import '@ionic/vue/css/core.css';
 
 // Import the Auth0 configuration and plugin
 import { domain, clientId, audience } from '../auth_config.json';
-import { Auth0Plugin } from '@/auth/auth0-plugin';
-
-// Install the authentication plugin
-Vue.use(Auth0Plugin, {
-  domain,
-  clientId,
-  audience,
-  onRedirectCallback: (appState) => {
-    router.push(
-      appState && appState.targetUrl
-        ? appState.targetUrl
-        : window.location.pathname,
-    );
-  },
-});
-
+import { createAuth0 } from '@/auth/auth0-plugin';
 
 /* Basic CSS for apps built with Ionic */
 import '@ionic/vue/css/normalize.css';
@@ -49,7 +34,7 @@ const app = createApp(App)
   .use(IonicVue)
   .use(store)
   .use(router)
-  .use(Auth0Plugin, {
+  .use(createAuth0, {
     domain,
     clientId,
     audience,

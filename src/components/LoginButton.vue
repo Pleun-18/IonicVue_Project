@@ -14,7 +14,6 @@
     methods: {
       login() {
         this.$auth.loginWithRedirect();
-        
       },
     },
   };
