@@ -6,13 +6,14 @@ import router from './router';
 import { store } from './store'
 
 import { IonicVue } from '@ionic/vue';
+import { FontAwesomeIcon } from './plugins/font-awesome'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
 
-// Import the Auth0 configuration and plugin
-import { domain, clientId, audience } from '../auth_config.json';
-import { createAuth0 } from '@/auth/auth0-plugin';
+// // Import the Auth0 configuration and plugin
+// import { domain, clientId, audience } from '../auth_config.json';
+// import { createAuth0 } from '@/auth/auth0-plugin';
 
 /* Basic CSS for apps built with Ionic */
 import '@ionic/vue/css/normalize.css';
@@ -34,18 +35,19 @@ const app = createApp(App)
   .use(IonicVue)
   .use(store)
   .use(router)
-  .use(createAuth0, {
-    domain,
-    clientId,
-    audience,
-    onRedirectCallback: (appState) => {
-      router.push(
-        appState && appState.targetUrl
-          ? appState.targetUrl
-          : window.location.pathname,
-      );
-    },
-  });
+  .component("font-awesome-icon", FontAwesomeIcon)
+  // .use(createAuth0, {
+  //   domain,
+  //   clientId,
+  //   audience,
+  //   onRedirectCallback: (appState) => {
+  //     router.push(
+  //       appState && appState.targetUrl
+  //         ? appState.targetUrl
+  //         : window.location.pathname,
+  //     );
+  //   },
+  // });
   
 router.isReady().then(() => {
   app.mount('#app');

@@ -1,6 +1,7 @@
 module.exports = {
     configureWebpack: {        
       devServer: {
+        port: 8008,
         headers: {
             'Access-Control-Allow-Origin': '*', // Allows Cross Origin
             'X-Content-Type-Options': 'nosniff', // Blocks SVG
@@ -12,5 +13,5 @@ module.exports = {
             // That last one creates an local https        
         }
       }
-    },
+    }
   }
