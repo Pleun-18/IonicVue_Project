@@ -123,7 +123,7 @@
       "src": "./assets/pdfs/04. The Ultimate Beginners Guide.pdf"
     }
   ], 
-  "credentials": [
+  "creds": [
     {
       "id": 1,
       "avatar": "./assets/avatars/avatar1.jpg",

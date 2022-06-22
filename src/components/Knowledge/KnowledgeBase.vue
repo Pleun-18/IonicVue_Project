@@ -58,7 +58,6 @@
             return {
                 download, 
                 close, 
-                
             }
         },
         mixins: [mixins],

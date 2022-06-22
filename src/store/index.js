@@ -22,7 +22,7 @@ export const store = createStore({
         inspections: [],
         finished: [], 
         pdfs: [], 
-        credentials: [], 
+        creds: [], 
         errors: []
         }
     },
