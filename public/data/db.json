@@ -96,26 +96,30 @@
   "pdfs": [
     {
       "id": 1,
+      "img": "./assets/pdfs/img/01.png",
       "name": "Sustainable Real estate",
-      "description": "Discussion with neighbours led to tree on roof",
+      "description": "Sustainable Real Estate",
       "src": "./assets/pdfs/01. Sustainable Real Estate.pdf"
     },
     {
       "id": 2,
-      "name": "report-2",
-      "description": "Discussion with neighbours led to tree on roof",
+      "img": "./assets/pdfs/img/02.png",
+      "name": "Handbook on residential property prices",
+      "description": "Handbook on residential property prices",
       "src": "./assets/pdfs/02. Handbook on Residential Property Prices.pdf"
     },
     {
       "id": 3,
-      "name": "report-3",
-      "description": "Discussion with neighbours led to tree on roof",
-      "src": "./assets/pdfs/03. Technical informatie.pdf"
+      "img": "./assets/pdfs/img/03.png",
+      "name": "Technical information",
+      "description": "Technical information",
+      "src": "./assets/pdfs/03. Technical information.pdf"
     },
     {
       "id": 4,
-      "name": "report-3",
-      "description": "Discussion with neighbours led to tree on roof",
+      "img": "./assets/pdfs/img/04.png",
+      "name": "The ultimate beginners guide",
+      "description": "The ultimate beginners guide",
       "src": "./assets/pdfs/04. The Ultimate Beginners Guide.pdf"
     }
   ], 

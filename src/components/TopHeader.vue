@@ -11,9 +11,12 @@
                     <ion-button color="primary">
                         <ion-icon :icon="settings"></ion-icon>
                     </ion-button>
-                    <ion-button color="primary" @click="openModal">
+                    <section>
+                      <router-link to="/login" v-if="!isLoggedIn">
                         <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
-                    </ion-button>
+                      </router-link>
+                      <a href="#" v-if="isLoggedIn" @click="logout">Logout</a> 
+                    </section>
                 </ion-buttons>
                 <ion-title>
                     <ion-img class="logo" src="./assets/logo/logo_white.png" />
@@ -29,7 +32,8 @@
 import { IonButton, IonButtons, IonIcon, modalController } from '@ionic/vue';
 import { helpCircle, personCircle, settings, notifications } from 'ionicons/icons';
 import { IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
-import ClientLogin from "./Login/ClientLogin.vue";
+import ClientLogin from "../views/Login/ClientLogin.vue";
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'TopHeader',
@@ -43,6 +47,11 @@ export default {
     }
   },
   methods: {
+    logout() {
+     this.$store.dispatch('logout');
+    },
+    ...mapActions(["logout"]),
+
     async openModal() {
       const modal = await modalController
         .create({
@@ -52,6 +61,14 @@ export default {
       return modal.present();
     },
   },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    }
+  },
+  getters: {
+    ...mapGetters(["isLoggedIn"])
+  }
 }
 
 </script>

@@ -1,6 +1,14 @@
 <template>
   <ion-app>
-    <ion-page>
+    <!-- <router-link to="/login" v-if="!isLoggedIn">
+        <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
+    </router-link>    -->
+
+    <ion-page v-if="!isLoggedIn">
+      <TopHeader />
+      <ClientLogin />
+    </ion-page>
+    <ion-page v-if="isLoggedIn">
       <TopHeader />
       <ion-router-outlet />
     </ion-page>
@@ -11,14 +19,30 @@
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import TopHeader from '@/components/TopHeader';
-// import ClientLogin from "./components/ClientLogin"
+import { mapGetters, mapActions } from 'vuex'
+import ClientLogin from "./views/Login/ClientLogin.vue";
 
 export default defineComponent({
   name: 'App',
   components: {
     IonApp,
     IonRouterOutlet, 
-    TopHeader
+    TopHeader, 
+    ClientLogin
+  }, 
+  methods: {
+    logout() {
+     this.$store.dispatch('logout');
+    },
+    ...mapActions(["logout"])
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    }
+  },
+  getters: {
+    ...mapGetters(["isLoggedIn"])
   }
 });
 </script>
