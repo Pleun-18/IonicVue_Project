@@ -13,7 +13,7 @@
 <script lang="js">
 import { defineComponent } from 'vue';
 import { IonPage } from '@ionic/vue';
-import TaskOverview from '/src/components/TaskOverview.vue'
+import TaskOverview from '/src/components/TabViews/TaskOverview.vue'
 
 export default  defineComponent({
   name: 'Tab1Page',

@@ -16,7 +16,7 @@
                     </ion-button>
                 </ion-buttons>
                 <ion-title>
-                    <ion-img class="logo" src="./assets/logo_white.png" />
+                    <ion-img class="logo" src="./assets/logo/logo_white.png" />
                 </ion-title>
             </ion-toolbar>
         </ion-header>
@@ -29,7 +29,7 @@
 import { IonButton, IonButtons, IonIcon, modalController } from '@ionic/vue';
 import { helpCircle, personCircle, settings, notifications } from 'ionicons/icons';
 import { IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
-import ClientLogin from "./ClientLogin.vue";
+import ClientLogin from "./Login/ClientLogin.vue";
 
 export default {
     name: 'TopHeader',

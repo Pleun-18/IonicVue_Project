@@ -57,38 +57,82 @@
       "comment": "Roof needs repearing"
     }
   ],
-  "reports": [
+  "finished": [
     {
       "id": 1,
-      "name": "report-1",
-      "src": "normbladen.pdf"
+      "name": "technical",
+      "location": "De achterhoek 53",
+      "date": "2022-02-21",
+      "type": "cooling",
+      "malfunction": "heater broken",
+      "procedure": "../public/assets/procedure.pdf",
+      "confirmed": true,
+      "description": "Because of a leak the house turned into a sauna...",
+      "comment": "heater needs repearing"
+    },
+    {
+      "id": 2,
+      "name": "modify",
+      "location": "Bakkersweg 98",
+      "date": "2022-02-26",
+      "procedure": "../public/assets/procedure.pdf",
+      "performer": "Huurder",
+      "action": "change",
+      "description": "Change Window(s)",
+      "comment": "Window(s) break easily"
+    },
+    {
+      "id": 3,
+      "name": "damage",
+      "location": "De voorhoek 35",
+      "date": "2022-03-17",
+      "new": false,
+      "type": "Willfully",
+      "action": true,
+      "description": "Discussion with neighbours led to tree on roof",
+      "comment": "Roof needs repearing"
+    }
+  ],
+  "pdfs": [
+    {
+      "id": 1,
+      "name": "Sustainable Real estate",
+      "description": "Discussion with neighbours led to tree on roof",
+      "src": "./assets/pdfs/01. Sustainable Real Estate.pdf"
     },
     {
       "id": 2,
       "name": "report-2",
-      "src": "testprocedures.pdf"
+      "description": "Discussion with neighbours led to tree on roof",
+      "src": "./assets/pdfs/02. Handbook on Residential Property Prices.pdf"
     },
     {
       "id": 3,
       "name": "report-3",
-      "src": "handleiding.pdf"
+      "description": "Discussion with neighbours led to tree on roof",
+      "src": "./assets/pdfs/03. Technical informatie.pdf"
+    },
+    {
+      "id": 4,
+      "name": "report-3",
+      "description": "Discussion with neighbours led to tree on roof",
+      "src": "./assets/pdfs/04. The Ultimate Beginners Guide.pdf"
     }
-  ],
-  "documents": [
-      {
-        "id": 1,
-        "name": "document-1",
-        "src": "normbladen.pdf"
-      },
-      {
-        "id": 2,
-        "name": "document-2",
-        "src": "testprocedures.pdf"
-      },
-      {
-        "id": 3,
-        "name": "document-3",
-        "src": "handleiding.pdf"
+  ], 
+  "credentials": [
+    {
+      "id": 1,
+      "avatar": "./assets/avatars/avatar1.jpg",
+      "name": "pleun",
+      "email": "pleun@onlinesupporter.nl",
+      "wachtwoord": "admin123",
+      "preferences": {
+        "light": true, 
+        "sound": {
+          "on": true, 
+          "type": "./assets/ringtones/short.mp3"
+        }
       }
-    ]
+    }
+  ]
 }
