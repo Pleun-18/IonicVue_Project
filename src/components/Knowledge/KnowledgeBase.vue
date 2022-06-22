@@ -1,5 +1,4 @@
 <template>
-
     <div class="container">
         <ion-header>
         <ion-toolbar>
@@ -14,62 +13,108 @@
             </ion-title>
         </ion-toolbar>
       </ion-header>
-    </div>
 
+      <br>
+
+      <div class="choiceBar">
+            <ion-button @click="fetchPdfs()" class="btn btn-success">Fetch</ion-button>
+        </div>
+
+        <!--Loading indicator/spinner-->
+        <div v-if="!loading" style="text-align: center;">
+            <h3>Loading...</h3>
+            <img src="../assets/spinner.svg" alt="Loading indicator...">
+        </div>
+
+        <!--Oh no, something bad happened! -->
+        <div v-if="error" class="alert alert-danger">
+            <h3>Error!</h3>
+            <div>{{ errorList }}</div>
+        </div>
+
+        <!--List with pdf data-->
+        <ion-list class="list-group" v-if="pdfs && pdfs.length">
+            <ion-item class="list-group-item"
+                 v-for="pdf in pdfs"
+                :key="pdf.id">
+                    <img :src="pdf.img" :alt="pdf.name">
+                    <h1> {{ pdf.name }} </h1>
+                    <a :href="pdf.src" :download="pdf.name">
+                        <ion-icon :icon="download"></ion-icon>
+                    </a>
+            </ion-item>
+        </ion-list>
+
+    </div>
 </template>
 
 <script>
   import mixins from '/src/mixins/mixins.js'
-  import { add, close, create, trash } from 'ionicons/icons';
+  import { download, close } from 'ionicons/icons';
 
     export default {
         name: "KnowledgeBase",
         setup() {
             return {
-                add, 
+                download, 
                 close, 
-                create, 
-                trash
+                
             }
         },
         mixins: [mixins],
         data() {
             return {
-                sortedInspections: [], 
-                isModalVisible: false, 
-                selectedInspectionIndex: 0
+                selectedPdfIndex: 0
+            }
+        },
+        methods: {
+            // 1. fetch all pdfs from the store
+            fetchPdfs() {
+                this.$store.dispatch('fetchPdfs')
+            },
+            // 2. clear pdfs from the store
+            clearPdfs() {
+                this.$store.dispatch('clearPdfs')
+            }
+        },
+        computed: {
+            pdfs() {
+                return this.$store.state.pdfs;
+            },
+            loading() {
+                return this.$store.state.loadingStatus === 'notloading'
+            },
+            error() {
+                return this.$store.state.errors.length > 0;
+            },
+            errorList() {
+                return this.$store.state.errors;
             }
         }
     }
 </script>
 
 <style scoped>
-    ion-fab-button {
+    /* .list-group-item {
+        display: flex;
+        flex-direction: column;
+    } */
+
+    .list-group-item {
+        display: flex;
+        flex: wrap;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    ion-icon {
         width: 35px;
-        height: 35px; 
+        height: 35px;
+    }
+
+    img {
+        width: 20%;
         margin: 5px;
     }
-
-    .choiceBar{
-        display: flex;
-        justify-content: space-around;
-        margin: 5px;
-    }
-
-    .labelInfo{
-        display: flex;
-        flex-direction: row;
-    }
-
-    ion-badge, div > p {
-        margin-right: 5px;
-    }
-
-    ion-searchbar {
-        width: 200px;
-        padding: 0;
-        margin: 0;
-    }
-
 
 </style>

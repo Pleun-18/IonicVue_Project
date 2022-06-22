@@ -14,20 +14,16 @@
         </ion-toolbar>
       </ion-header>
         <div class="choiceBar">
-            <ion-button @click="fetchInspections()" class="btn btn-success">Fetch</ion-button>
-            <!-- <ion-button @click="clearInspections()" class="btn btn-danger">Clear</ion-button> -->
+            <ion-button @click="fetchFinished()" class="btn btn-success">Fetch</ion-button>
             <ion-button class="btn">A/Z</ion-button>
             <!-- Searchbar with a custom debounce -->
             <ion-searchbar animated></ion-searchbar>
-            <ion-fab-button>
-                <ion-icon :icon="add"></ion-icon>
-            </ion-fab-button>
         </div>
 
         <!--Loading indicator/spinner-->
         <div v-if="!loading">
             <h3 style="margin: 0 auto;">Loading...</h3>
-            <img src="/public/assets/spinner.gif" alt="Loading indicator...">
+            <img src="../assets/spinner.svg" alt="Loading indicator...">
         </div>
 
         <!--Oh no, something bad happened! -->
@@ -36,19 +32,19 @@
             <div>{{ errorList }}</div>
         </div>
 
-        <!--List with inspection data-->
-        <ion-list class="list-group" v-if="inspections && inspections.length">
+        <!--List with finished inspection data-->
+        <ion-list class="list-group" v-if="finished && finished.length">
             <ion-item class="list-group-item"
-                @click="selectInspection(inspection.id)"
-                v-for="inspection in inspections"
-                :key="inspection.location">
+                @click="selectFinished(finshed.id)"
+                v-for="finished in finished"
+                :key="finished.location">
                 <!-- <ion-checkbox slot="start"></ion-checkbox> -->
                 <ion-label @click="showModal()" type="button" class="btn">
                     <div class="labelInfo">
-                        <ion-badge color="success" slot="end"> {{ inspection.name }} </ion-badge>
-                        <p> {{ inspection.date }} </p>
+                        <ion-badge color="success" slot="end"> {{ finished.name }} </ion-badge>
+                        <p> {{ finished.date }} </p>
                     </div>
-                    <h1> {{ inspection.location }} </h1>
+                    <h1> {{ finished.location }} </h1>
                 </ion-label>
                 <ion-fab-button>
                     <ion-icon :icon="create" style="color: white;"></ion-icon>
@@ -85,24 +81,23 @@
             return {
                 sortedInspections: [], 
                 isModalVisible: false, 
-                selectedInspectionIndex: 0
+                selectedFinishedIndex: 0
             }
         },
         methods: {
             // 1. fetch all Inspections from the store
-            fetchInspections() {
-                this.$store.dispatch('fetchInspections')
-                return console.log(this.filteredInspections);
+            fetchFinished() {
+                this.$store.dispatch('fetchFinished')
             },
             // 2. clear inspections from the store
-            clearInspections() {
-                this.$store.dispatch('clearInspections')
+            clearFinished() {
+                this.$store.dispatch('clearFinished')
             }, 
             //filtering before getting cloned data in Mounted
             filteredInspections() {
                 console.log(this.inspections);
                 if (!this.inspections) return;
-                this.sortedInspections = [...this.inspections];
+                this.sortedInspections = [...this.finished];
                 console.log("these are sorted: " + this.sortedInspections);
                 this.sortedInspections.sort(function (a, b) {
                 let dateA = new Date(a.date);
@@ -117,15 +112,15 @@
                 this.isModalVisible = false;
             },
             //select the inspection on-clicking
-            selectInspection(inspectionId) {
+            selectFinished(finishedId) {
                 // const modalContent = Object.entries();
-                this.selectedInspectionIndex = inspectionId - 1;
-                console.log(inspectionId);
+                this.selectedFinishedIndex = finishedId - 1;
+                console.log(finishedId);
             }
         },
         computed: {
-            inspections() {
-                return this.$store.state.inspections;
+            finished() {
+                return this.$store.state.finished;
             },
             loading() {
                 return this.$store.state.loadingStatus === 'notloading'
@@ -136,10 +131,10 @@
             errorList() {
                 return this.$store.state.errors;
             }, 
-            selectedInspection() {
-                console.log('Inspection selected')
+            selectedFinished() {
+                console.log('Finished inspection selected')
                 return {
-                    ...this.inspections[this.selectedInspectionIndex]
+                    ...this.finished[this.selectedFinishedIndex]
                 }
             }
         }
