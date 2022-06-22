@@ -1,7 +1,9 @@
 <template>
   <ion-app>
-    <TopHeader />
-    <ion-router-outlet />
+    <ion-page>
+      <TopHeader />
+      <ion-router-outlet />
+    </ion-page>
   </ion-app>
 </template>
 
@@ -9,7 +11,7 @@
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import TopHeader from '@/components/TopHeader';
-// import ClientLogin from "./components/ClienLogin"
+// import ClientLogin from "./components/ClientLogin"
 
 export default defineComponent({
   name: 'App',
