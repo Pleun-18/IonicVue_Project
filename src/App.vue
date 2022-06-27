@@ -62,9 +62,17 @@ export default defineComponent({
     font-family: 'Titillium Web', sans-serif;
   }
 
+  h3 {
+    font-size: 16px;
+    line-height: 1.4;
+    text-align: left;
+  }
+
   p {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    line-height: 1.4;
   }
 
   #container {
