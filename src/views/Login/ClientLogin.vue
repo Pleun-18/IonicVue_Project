@@ -4,14 +4,31 @@
       <ion-buttons slot="start">
       </ion-buttons>
       <ion-title>Login screen</ion-title>
-      <ion-item>Login with your credentials.</ion-item>
     </ion-toolbar>
   </ion-header>
     <br>
-    <form @submit.prevent="login({ email, password })">
-      <input type="text" placeholder="email" v-model="email">
-      <input type="password" placeholder="password" v-model="password">
+    <ion-item>Login with your credentials.</ion-item>
+    <form class="loginForm" @submit.prevent="login({ email, password })" action="db.json/creds" method="post">
+      <input type="text" placeholder="email" v-model="emailLogin">
+      <input type="password" placeholder="password" v-model="passwordLogin">
       <button type="submit">Login</button>
+    </form>
+
+    <ion-toolbar>
+      <ion-buttons slot="start">
+      </ion-buttons>
+      <ion-item>Or make a new account</ion-item>
+    </ion-toolbar>
+    <br>
+    <form class="signupForm" @submit.prevent="login({ email, password })">
+      <label for="avatar">Choose a profile picture:</label>
+      <input type="file"
+       id="avatar" name="avatar"
+       accept="image/png, image/jpeg">
+
+      <input type="text" placeholder="email" v-model="emailSignup">
+      <input type="password" placeholder="password" v-model="passwordSignup">
+      <button type="submit">Sign in</button>
     </form>
 
 </template>
@@ -56,19 +73,20 @@ export default defineComponent({
 
   input {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     width: 80%;
     border: 3px solid gray;
     box-shadow: 2px 2px 2px gray;
     margin-top: 5px;
   }
+  
+  label {
+    display: block;
+    width: 80%;
+  }
 
   button {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
+    width: 50%;
     background: var(--ion-color-secondary);
     opacity: 0.6;
     padding: 10px 15px;

@@ -6,7 +6,7 @@ const url = [
     "http://localhost:3000/inspections", 
     "http://localhost:3000/finished",
     "http://localhost:3000/pdfs",
-    "http://localhost:3000/credentials"
+    "http://localhost:3000/creds"
 ]
 
 const LOGIN = "LOGIN";
@@ -16,7 +16,7 @@ const LOGOUT = "LOGOUT";
 export const store = createStore({
     state () {
         return {
-        isLoggedIn: localStorage.getItem("token"),
+        isLoggedIn: !!localStorage.getItem("token"),
         counter: 0, 
         loadingStatus: 'notLoading', 
         inspections: [],
@@ -40,6 +40,9 @@ export const store = createStore({
         state.isLoggedIn = true;
         state.pending = false;
         },
+        // [STORE_USER] (state, {user}) {
+        //     state.user = user;
+        // },
         [LOGOUT](state) {
         state.isLoggedIn = false;
         },
@@ -78,12 +81,19 @@ export const store = createStore({
             commit(LOGIN); // show spinner
             return new Promise(resolve => {
               setTimeout(() => {
-                localStorage.setItem("token", "JWT");
-                console.log("login succes")
-                commit(LOGIN_SUCCESS);
-                resolve();
-              }, 1000);
-            });
+                axios.get(url[0])
+                .then(result => {
+                    localStorage.setItem("token", "JWT");
+                    commit('LOGIN', result.data);
+                    console.log("login succes")
+                    commit(LOGIN_SUCCESS);
+                    resolve();
+                })
+                .catch(err => {
+                    console.log("error:  " + err);
+                })
+                }, 1000);
+            })
           },
           logout({ commit }) {
             localStorage.removeItem("token");
@@ -142,25 +152,6 @@ export const store = createStore({
                     .catch(err => {
                         context.commit('SET_LOADING_STATUS', 'notloading');
                         context.commit('SET_PDFS', []);
-                        context.commit('ADD_ERROR', err);
-                        console.log("error:  " + err);
-                    })
-            }, 1500);
-        },
-        fetchCredentials(context) {
-            // 1. Set loading status
-            context.commit('SET_LOADING_STATUS', 'loading');
-            // 2. Make http-request - optional you can simulate a delay by wrapping it in a setTimeOut
-            setTimeout(() => {
-                axios.get(url[3])
-                    .then(result => {
-                        context.commit('SET_LOADING_STATUS', 'notloading');
-                        context.commit('SET_CREDENTIALS', result.data);
-                        console.log(result);
-                    })
-                    .catch(err => {
-                        context.commit('SET_LOADING_STATUS', 'notloading');
-                        context.commit('SET_CREDENTIALS', []);
                         context.commit('ADD_ERROR', err);
                         console.log("error:  " + err);
                     })
