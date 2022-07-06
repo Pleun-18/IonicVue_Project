@@ -1,8 +1,5 @@
 <template>
   <ion-app>
-    <!-- <router-link to="/login" v-if="!isLoggedIn">
-        <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
-    </router-link>    -->
 
     <ion-page v-if="!isLoggedIn">
       <TopHeader />
@@ -12,6 +9,7 @@
       <TopHeader />
       <ion-router-outlet />
     </ion-page>
+    
   </ion-app>
 </template>
 

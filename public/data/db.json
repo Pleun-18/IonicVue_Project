@@ -8,8 +8,7 @@
       "new": true,
       "type": "Violence",
       "action": false,
-      "description": "Multiple broken windows...",
-      "comment": "Window needs repearing"
+      "description": "Multiple broken windows..."
     },
     {
       "id": 2,
@@ -19,7 +18,6 @@
       "type": "wood rot",
       "action": true,
       "costs": 1700,
-      "description": "Window glass is not thick enought, needs replacement...",
       "comment": "Window(s) break easily"
     },
     {
@@ -29,9 +27,7 @@
       "date": "2022-02-21",
       "type": "cooling",
       "malfunction": "heater broken",
-      "procedure": "../public/assets/procedure.pdf",
       "confirmed": true,
-      "description": "Because of a leak the house turned into a sauna...",
       "comment": "heater needs repearing"
     },
     {
@@ -39,9 +35,8 @@
       "name": "modify",
       "location": "Bakkersweg 98",
       "date": "2022-02-26",
-      "procedure": "../public/assets/procedure.pdf",
       "performer": "Huurder",
-      "action": "change",
+      "type": "change",
       "description": "Change Window(s)",
       "comment": "Window(s) break easily"
     },
@@ -53,8 +48,7 @@
       "new": false,
       "type": "Willfully",
       "action": true,
-      "description": "Discussion with neighbours led to tree on roof",
-      "comment": "Roof needs repearing"
+      "description": "Discussion with neighbours led to tree on roof"
     }
   ],
   "finished": [
@@ -122,7 +116,7 @@
       "description": "The ultimate beginners guide",
       "src": "./assets/pdfs/04. The Ultimate Beginners Guide.pdf"
     }
-  ], 
+  ],
   "creds": [
     {
       "id": 1,
@@ -131,9 +125,9 @@
       "email": "pleun@onlinesupporter.nl",
       "wachtwoord": "admin123",
       "preferences": {
-        "light": true, 
+        "light": true,
         "sound": {
-          "on": true, 
+          "on": true,
           "type": "./assets/ringtones/short.mp3"
         }
       }

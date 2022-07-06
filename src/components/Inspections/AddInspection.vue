@@ -8,80 +8,73 @@
             </ion-button>
         </ion-buttons>
             <ion-title>
-            <h2> Current Assigned Reports</h2>
+            <h2> Add report </h2>
             </ion-title>
         </ion-toolbar>
       </ion-header>
 
-    <form>
-      <div class="formPart">
-        <div> 
-          <select name="name" id="AddInspectionForm" form="InspectionForm">
-            <option value="damage">Damage</option>
-            <option value="maintenance">Maintenance</option>
-            <option value="technical">Technical</option>
-            <option value="modify">Modify</option>
-          </select>
-        </div>
-      
-        <div>
-          <label for="fname">Location:</label>
-          <input type="text" id="locationInput" name="locationInput" size="10">
-        </div>
-      </div>
-      
-      <div class="formPart">
-        <div>
-          <label for="lname">Date:</label>
-          <input type="text" id="dateInput" name="dateInput" placeholder="2022-07-16" size="10">
-        </div>
-        <div>
-          <select name="new_repeat" id="newRepeat" form="InspectionForm">
-            <option value="damage">Yes</option>
-            <option value="maintenance">No</option>
-          </select>
-        </div>
-      </div>
+    <div class="contentInner">
 
-      <div class="formPart">
-        <div>
-          <label for="name">Describe the type of damage:</label>
-          <input type="text" id="name" name="name" required
-                minlength="20" maxlength="150" size="10">
-        </div>
-        <div>
-          <label for="name">Comments concerning situation:</label>
-          <input type="text" id="name" name="name" required
-                minlength="20" maxlength="150" size="10">
-        </div>
-      </div>
+      <form id="inspectionsForm" name="addInspectionForm" method="post">
+          <div id="damage modify maintenance technical"> 
+            <label class="labelTitle" for="damageType">Pick a type: </label><br>
+            <select v-model="current" name="selectInspection" id="inspectionSelect" form="InspectionsForm" required>
+              <option value="DamageForm">Take damage</option>
+              <option value="MaintenanceForm">Take maintenance</option>
+              <option value="TechnicalForm">Technical inspection</option>
+              <option value="ModificationForm">Inventorize modification</option>
+            </select>
+          </div>   
+      </form>
+      <KeepAlive>
+        <component :is="current"></component>
+      </KeepAlive>
 
-        <input type="submit" value="Add">
-        <button type="submit"></button>
-
-    </form>
-
+    </div>
   </div>
 </template>
 
 <script>
 
 import { close } from 'ionicons/icons';
-import mixins from '/src/mixins/mixins.js'
+import mixins from '/src/mixins/mixins.js';
+import DamageForm from '../forms/DamageForm.vue';
+import MaintenanceForm from '../forms/MaintenanceForm.vue';
+import TechnicalForm from '../forms/TechnicalForm.vue';
+import ModificationForm from '../forms/ModificationForm.vue';
+
 
 export default {
     name: 'AddInspection',
     props: ['inspection'],
     mixins: [mixins],
-    setup() {
+    components: {
+      DamageForm,
+      MaintenanceForm, 
+      TechnicalForm, 
+      ModificationForm
+    },
+    data() {
       return {
-          close,
+        current: "DamageForm",
       }
     },
+    setup() {
+      return {
+          close
+      }
+    }, 
+    computed: {
+
+    }
 }
 </script>
 
 <style>
+
+  .contentInner {
+    overflow-y: scroll;
+  }
 
   form {
     display: flex;
@@ -99,17 +92,21 @@ export default {
     padding: 5px;
   }
 
+  .labelTitle {
+    font-weight: 800;
+  }
+
+  div {
+    margin-bottom: 10px;
+  }
+
+  .link {
+    color: black;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
 </style>
-
-
-{
-    "id": 1,
-    "name": "damage",
-    "location": "Invanteriestraat 25",
-    "date": "2022-07-16",
-    "new": true,
-    "type": "Violence",
-    "action": false,
-    "description": "Multiple broken windows...",
-    "comment": "Window needs repearing"
-},
