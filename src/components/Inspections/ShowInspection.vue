@@ -34,7 +34,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'EditInspection',
+    name: 'ShowInspection',
     props: ['inspection'],
     methods: {
       close() {

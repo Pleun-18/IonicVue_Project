@@ -19,15 +19,12 @@
             <ion-button class="btn">A/Z</ion-button>
             <!-- Searchbar with a custom debounce -->
             <ion-searchbar animated></ion-searchbar>
-            <ion-fab-button>
-                <ion-icon :icon="add" @click="addInspection"></ion-icon>
-            </ion-fab-button>
         </div>
 
         <!--Loading indicator/spinner-->
         <div v-if="!loading" style="text-align: center;">
             <h3>Loading...</h3>
-            <img src="./assets/spinner.svg" alt="Loading indicator...">
+            <img src="../assets/spinner.svg" alt="Loading indicator...">
         </div>
 
         <!--Oh no, something bad happened! -->
@@ -39,13 +36,13 @@
         <!--List with inspection data-->
         <ion-list class="list-group" v-if="inspections && inspections.length">
             <ion-item class="list-group-item"
-                @click="selectInspection(inspection.id)"
+                @click="selectInspection(inspection.id), showModal()"
                 v-for="inspection in inspections"
                 :key="inspection.location">
                 <!-- <ion-checkbox slot="start"></ion-checkbox> -->
                 <ion-label type="button" class="btn">
                     <div class="labelInfo">
-                        <ion-badge color="success" slot="end"> {{ inspection.name }} </ion-badge>
+                        <ion-badge color="danger" slot="end"> {{ inspection.name }} </ion-badge>
                         <p> {{ inspection.date }} </p>
                     </div>
                     <h1> {{ inspection.location }} </h1>
@@ -56,15 +53,18 @@
             </ion-item>
         </ion-list>
 
-        <EditInspection v-if="selectedInspection" :inspection="selectedInspection" v-show="isModalVisible" @close="closeEditInspection"></EditInspection>
-
+        <ShowInspection v-if="selectedInspection" :inspection="selectedInspection" v-show="isModalVisible" @close="closeModal"></ShowInspection>
+        
+        <ion-fab-button class="add">
+            <ion-icon :icon="add" @click="addInspection" style="color: #00AAA2;"></ion-icon>
+        </ion-fab-button>
     </div>
 </template>
 
 <script>
   import mixins from '/src/mixins/mixins.js'
   import { add, close, create, trash } from 'ionicons/icons';
-  import EditInspection from './EditInspection';
+  import ShowInspection from './ShowInspection';
   import AddInspection from './AddInspection';
 //   import ActionButton from '../components/ActionButton.vue'
   import { IonFabButton, modalController } from '@ionic/vue';
@@ -80,7 +80,7 @@
             }
         },
         mixins: [mixins],
-        components: { EditInspection, IonFabButton },
+        components: { ShowInspection, IonFabButton },
         data() {
             return {
                 sortedInspections: [], 
@@ -105,15 +105,15 @@
                 this.sortedInspections = [...this.inspections];
                 console.log("these are sorted: " + this.sortedInspections);
                 this.sortedInspections.sort(function (a, b) {
-                let dateA = new Date(a.date);
-                let dateB = new Date(b.date);
-                return dateA - dateB;
+                    let dateA = new Date(a.date);
+                    let dateB = new Date(b.date);
+                    return dateA - dateB;
                 });
             },
-            editInspection() {
+            showModal() {
                 this.isModalVisible = true;
             },
-            closeEditInspection() {
+            closeModal() {
                 this.isModalVisible = false;
             },
             //select the inspection on-clicking
@@ -161,6 +161,12 @@
         margin: 5px;
     }
 
+    .add {
+        float: right;
+        width: 50px;
+        height: 50px;
+    }
+
     .choiceBar{
         display: flex;
         justify-content: space-around;
@@ -181,10 +187,5 @@
         padding: 0;
         margin: 0;
     }
-
-    /* .button-inner {
-        --background: red !important;
-    } */
-
 
 </style>

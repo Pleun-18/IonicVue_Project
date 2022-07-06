@@ -1,9 +1,15 @@
 <template>
   <ion-app>
-    <ion-page>
+
+    <ion-page v-if="!isLoggedIn">
+      <TopHeader />
+      <ClientLogin />
+    </ion-page>
+    <ion-page v-if="isLoggedIn">
       <TopHeader />
       <ion-router-outlet />
     </ion-page>
+    
   </ion-app>
 </template>
 
@@ -11,14 +17,30 @@
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import TopHeader from '@/components/TopHeader';
-// import ClientLogin from "./components/ClientLogin"
+import { mapGetters, mapActions } from 'vuex'
+import ClientLogin from "./views/Login/ClientLogin.vue";
 
 export default defineComponent({
   name: 'App',
   components: {
     IonApp,
     IonRouterOutlet, 
-    TopHeader
+    TopHeader, 
+    ClientLogin
+  }, 
+  methods: {
+    logout() {
+     this.$store.dispatch('logout');
+    },
+    ...mapActions(["logout"])
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    }
+  },
+  getters: {
+    ...mapGetters(["isLoggedIn"])
   }
 });
 </script>
@@ -38,9 +60,17 @@ export default defineComponent({
     font-family: 'Titillium Web', sans-serif;
   }
 
+  h3 {
+    font-size: 16px;
+    line-height: 1.4;
+    text-align: left;
+  }
+
   p {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    line-height: 1.4;
   }
 
   #container {

@@ -4,12 +4,25 @@ import TabsPage from '../views/TabsPage.vue'
 
 const routes = [
   {
+    path: '/login',
+    component: () => import('@/views/Login/ClientLogin.vue'),
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: '/tabs/tab1',
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/tabs/',
     component: TabsPage,
+    meta: {
+      requiresAuth: true
+    },
     children: [
       {
         path: '',

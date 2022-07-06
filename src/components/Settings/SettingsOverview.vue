@@ -13,24 +13,42 @@
             </ion-title>
         </ion-toolbar>
       </ion-header>
+
+      <ion-list>
+    <ion-item>
+      <ion-label>Enable dark theme</ion-label>
+      <ion-toggle color="dark"
+        @ionChange="toppings.value.push($event.target.value)"
+        value="pepperoni"
+        :checked="toppings.indexOf('pepperoni') !== -1">
+      </ion-toggle>
+    </ion-item>
+  </ion-list>
+
     </div>
 </template>
 
 <script>
   import mixins from '/src/mixins/mixins.js'
   import { add, close, create, trash } from 'ionicons/icons';
+  import { IonLabel, IonList, IonItem, IonToggle } from '@ionic/vue';
+  import { ref } from 'vue';
 
     export default {
         name: "KnowledgeBase",
+        components: { IonLabel, IonList, IonItem, IonToggle },
         setup() {
+          const toppings = ref([]);
             return {
                 add, 
                 close, 
                 create, 
-                trash
+                trash, 
+                toppings
             }
         },
         mixins: [mixins],
+        
     }
 </script>
 
