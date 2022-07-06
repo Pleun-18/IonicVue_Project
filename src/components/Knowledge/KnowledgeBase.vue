@@ -9,7 +9,6 @@
           </ion-buttons>
             <ion-title>
               <h2> Knowledge base </h2>
-              <p> Everything you need to know about this platform? </p>
             </ion-title>
         </ion-toolbar>
       </ion-header>
@@ -17,7 +16,7 @@
       <br>
 
       <div class="choiceBar">
-            <ion-button @click="fetchPdfs()" class="btn btn-success">Fetch</ion-button>
+            <ion-button @click="fetchPdfs()" class="btn btn-success">Click here to load all resources</ion-button>
         </div>
 
         <!--Loading indicator/spinner-->

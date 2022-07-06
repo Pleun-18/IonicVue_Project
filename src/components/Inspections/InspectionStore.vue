@@ -42,7 +42,7 @@
                 <!-- <ion-checkbox slot="start"></ion-checkbox> -->
                 <ion-label type="button" class="btn">
                     <div class="labelInfo">
-                        <ion-badge color="success" slot="end"> {{ inspection.name }} </ion-badge>
+                        <ion-badge color="danger" slot="end"> {{ inspection.name }} </ion-badge>
                         <p> {{ inspection.date }} </p>
                     </div>
                     <h1> {{ inspection.location }} </h1>
