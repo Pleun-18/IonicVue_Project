@@ -49,6 +49,35 @@
       "type": "Willfully",
       "action": true,
       "description": "Discussion with neighbours led to tree on roof"
+    },
+    {
+      "name": "modify",
+      "location": "Jan tikkelstraat 93",
+      "date": "2022-06-16",
+      "performer": "owner",
+      "description": "Really nothing",
+      "comment": "Look better",
+      "id": 6
+    },
+    {
+      "name": "damage",
+      "location": "Kielewiele 34",
+      "date": "2022-09-08",
+      "new": "yes",
+      "type": "Violence",
+      "action": "No",
+      "description": "hello there mate",
+      "id": 7
+    },
+    {
+      "name": "damage",
+      "location": "Wousieraar 28",
+      "date": "2025-12-11",
+      "new": "yes",
+      "type": "Violence",
+      "action": "No",
+      "description": "JAJAJAAJ en gelijk had ie",
+      "id": 8
     }
   ],
   "finished": [

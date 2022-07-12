@@ -13,6 +13,9 @@
                 </ion-title>
             </ion-toolbar>
       </ion-header>
+      <div class="spaceBetween">
+        
+      </div>
         <div class="choiceBar">
             <ion-button @click="fetchInspections()" class="btn btn-success">Fetch</ion-button>
             <!-- <ion-button @click="clearInspections()" class="btn btn-danger">Clear</ion-button> -->
@@ -35,12 +38,9 @@
 
         <!--List with inspection data-->
         <ion-list class="list-group" v-if="inspections && inspections.length">
-            <ion-item class="list-group-item"
-                @click="selectInspection(inspection.id), showModal()"
-                v-for="inspection in inspections"
-                :key="inspection.location">
+            <ion-item class="list-group-item" v-for="inspection in inspections" :key="inspection.location">
                 <!-- <ion-checkbox slot="start"></ion-checkbox> -->
-                <ion-label type="button" class="btn">
+                <ion-label @click="selectInspection(inspection.id), showModal()" type="button" class="btn">
                     <div class="labelInfo">
                         <ion-badge color="danger" slot="end"> {{ inspection.name }} </ion-badge>
                         <p> {{ inspection.date }} </p>
@@ -48,7 +48,7 @@
                     <h1> {{ inspection.location }} </h1>
                 </ion-label>
                 <ion-fab-button>
-                    <ion-icon :icon="trash" style="color: white;"></ion-icon>
+                    <ion-icon @click="removeEntry(inspection.id)" :icon="trash" style="color: white;"></ion-icon>
                 </ion-fab-button>
             </ion-item>
         </ion-list>
@@ -130,6 +130,14 @@
                 })
             return modal.present();
             },
+            //Remove inspection object from array
+             removeEntry: function(id) {
+                console.log(id);
+                let inspectionId = this.inspections.findIndex(o => o.id === id);
+                this.inspections.splice(inspectionId, 1);
+                // delete this.inspections[inspectionId].location;
+                // console.log(this.inspections);
+            }
         },
         computed: {
             inspections() {
@@ -155,6 +163,20 @@
 </script>
 
 <style scoped>
+
+    .container {
+        overflow-y: scroll;
+        height: 100%;
+    }
+
+    .spaceBetween {
+        padding: 50px;
+    }
+
+    ion-header{
+        position: fixed;
+    }
+
     ion-fab-button {
         width: 35px;
         height: 35px; 
