@@ -19,7 +19,7 @@
           <ion-icon slot="start" name="moon"></ion-icon>
           <ion-icon slot="start" name="sunny"></ion-icon>
           <ion-label>Toggle Dark Theme</ion-label>
-          <ion-toggle slot="end" @change="setTheme($event)"></ion-toggle>
+          <ion-toggle slot="end" @ionChange="setTheme($event)" v-model="selected"></ion-toggle>
         </ion-item>
       </ion-list>
 
