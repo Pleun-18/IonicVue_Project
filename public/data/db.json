@@ -152,9 +152,23 @@
       "avatar": "./assets/avatars/avatar1.jpg",
       "name": "pleun",
       "email": "pleun@onlinesupporter.nl",
-      "wachtwoord": "admin123",
+      "token": "admin123",
       "preferences": {
         "light": true,
+        "sound": {
+          "on": true,
+          "type": "./assets/ringtones/short.mp3"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "avatar": "./assets/avatars/avatar2.jpg",
+      "name": "Amjada",
+      "email": "amjada@onlinesupporter.nl",
+      "token": "admin321",
+      "preferences": {
+        "light": false,
         "sound": {
           "on": true,
           "type": "./assets/ringtones/short.mp3"

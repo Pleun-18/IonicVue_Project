@@ -69,10 +69,6 @@
             // 1. fetch all pdfs from the store
             fetchPdfs() {
                 this.$store.dispatch('fetchPdfs')
-            },
-            // 2. clear pdfs from the store
-            clearPdfs() {
-                this.$store.dispatch('clearPdfs')
             }
         },
         computed: {
@@ -93,10 +89,6 @@
 </script>
 
 <style scoped>
-    /* .list-group-item {
-        display: flex;
-        flex-direction: column;
-    } */
 
     .list-group-item {
         display: flex;
