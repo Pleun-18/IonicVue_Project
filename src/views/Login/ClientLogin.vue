@@ -1,4 +1,5 @@
 <template>
+
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
@@ -9,26 +10,9 @@
     <br>
     <ion-item>Login with your credentials.</ion-item>
     <form class="loginForm" @submit.prevent="login({ email, password })" action="db.json/creds" method="post">
-      <input type="text" placeholder="email" v-model="emailLogin">
-      <input type="password" placeholder="password" v-model="passwordLogin">
+      <input type="text" placeholder="E-mail" v-model="email">
+      <input type="password" placeholder="Password" v-model="password">
       <button type="submit">Login</button>
-    </form>
-
-    <ion-toolbar>
-      <ion-buttons slot="start">
-      </ion-buttons>
-      <ion-item>Or make a new account</ion-item>
-    </ion-toolbar>
-    <br>
-    <form class="signupForm" @submit.prevent="login({ email, password })">
-      <label for="avatar">Choose a profile picture:</label>
-      <input type="file"
-       id="avatar" name="avatar"
-       accept="image/png, image/jpeg">
-
-      <input type="text" placeholder="email" v-model="emailSignup">
-      <input type="password" placeholder="password" v-model="passwordSignup">
-      <button type="submit">Sign in</button>
     </form>
 
 </template>
@@ -42,7 +26,10 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'ClientLogin',
-  components: { IonHeader, IonTitle, IonToolbar},
+  components: { 
+    IonHeader, 
+    IonTitle, 
+    IonToolbar},
   mixins: [mixins],
   setup() {
     return{
@@ -55,15 +42,43 @@ export default defineComponent({
       password: ""
     }
   },
+  beforeMount() {
+    this.fetchCreds();
+  },
   methods: {
+    fetchCreds() {
+        this.$store.dispatch('fetchCreds')
+    },
     login() {
-      this.$store.dispatch("login", {
-        email: this.email,
-        password: this.password
-      }).then(() => {
-        this.$router.push("/")
-      });
+      console.log(this.creds)
+      let checkCreds = this.creds.find(o => o.email === this.email && o.token === this.password);
+      if (checkCreds) {
+        this.$store.dispatch("login", {
+          email: this.email,
+          password: this.password
+        }).then(() => {
+          this.$router.push("/")
+        });
+      } else {
+        alert("Invalid credentials");
+        console.log(this.creds);
+      } 
     }
+  }, 
+  computed: {
+      creds() {
+          console.log(this.$store.state.creds);
+          return this.$store.state.creds;
+      },
+      loading() {
+          return this.$store.state.loadingStatus === 'notloading'
+      },
+      error() {
+          return this.$store.state.errors.length > 0;
+      },
+      errorList() {
+          return this.$store.state.errors;
+      }
   }
 });
 
@@ -74,9 +89,10 @@ export default defineComponent({
   input {
     display: block;
     width: 80%;
-    border: 3px solid gray;
-    box-shadow: 2px 2px 2px gray;
+    box-shadow: inset 0px 0px 8px gray;
     margin-top: 5px;
+    border: none;
+    padding: 5px;
   }
   
   label {
@@ -97,6 +113,10 @@ export default defineComponent({
     background: var(--ion-color-secondary);
     opacity: 1;
     scale: 1.1;
+  }
+
+  .loginForm {
+    margin-left: 25px;
   }
 
 </style>

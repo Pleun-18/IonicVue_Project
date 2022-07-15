@@ -48,7 +48,7 @@
                     <h1> {{ inspection.location }} </h1>
                 </ion-label>
                 <ion-fab-button>
-                    <ion-icon @click="removeEntry(inspection.id)" :icon="trash" style="color: white;"></ion-icon>
+                    <ion-icon @click="deleteInspection(inspection.id)" :icon="trash" style="color: white;"></ion-icon>
                 </ion-fab-button>
             </ion-item>
         </ion-list>
@@ -92,7 +92,6 @@
             // 1. fetch all Inspections from the store
             fetchInspections() {
                 this.$store.dispatch('fetchInspections')
-                return console.log(this.filteredInspections);
             },
             // 2. clear inspections from the store
             clearInspections() {
@@ -130,13 +129,9 @@
                 })
             return modal.present();
             },
-            //Remove inspection object from array
-             removeEntry: function(id) {
-                console.log(id);
-                let inspectionId = this.inspections.findIndex(o => o.id === id);
-                this.inspections.splice(inspectionId, 1);
-                // delete this.inspections[inspectionId].location;
-                // console.log(this.inspections);
+            //Remove inspection-object from array
+            deleteInspection(inspection) {
+                this.$store.commit('DELETE_INSPECTION', inspection);
             }
         },
         computed: {
