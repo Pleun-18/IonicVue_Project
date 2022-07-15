@@ -66,7 +66,6 @@
   import { add, close, create, trash } from 'ionicons/icons';
   import ShowInspection from './ShowInspection';
   import AddInspection from './AddInspection';
-//   import ActionButton from '../components/ActionButton.vue'
   import { IonFabButton, modalController } from '@ionic/vue';
 
     export default {
