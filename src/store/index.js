@@ -32,11 +32,6 @@ export const store = createStore({
         }
     },
     mutations: {
-        // mutations voor axios/REST LOGIN (credentials)
-        // [USER_CREDS] (state) {
-        //     state.username = false;
-        //     state.password = false;
-        // },
         LOGIN (state, payload) {
             state.pending = true;
             state.creds = payload;
@@ -154,6 +149,7 @@ export const store = createStore({
                 .then(() => {              
                      commit('DELETE_INSPECTION', id);
                      this.inspections.$remove(id);
+                    //  axios.delete('http://localhost:3000/inspections/' + id)
                 });
         },
         fetchFinished(context) {

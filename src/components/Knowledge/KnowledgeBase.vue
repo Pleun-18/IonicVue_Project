@@ -15,13 +15,8 @@
 
       <br>
 
-      <div class="choiceBar">
-            <ion-button @click="fetchPdfs()" class="btn btn-success">Click here to load all resources</ion-button>
-        </div>
-
         <!--Loading indicator/spinner-->
         <div v-if="!loading" style="text-align: center;">
-            <h3>Loading...</h3>
             <img src="../assets/spinner.svg" alt="Loading indicator...">
         </div>
 
@@ -84,6 +79,9 @@
             errorList() {
                 return this.$store.state.errors;
             }
+        }, 
+        beforeMount() {
+            this.fetchPdfs();
         }
     }
 </script>

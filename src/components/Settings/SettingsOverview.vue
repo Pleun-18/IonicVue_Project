@@ -14,38 +14,106 @@
         </ion-toolbar>
       </ion-header>
 
+    <div class="userOverview">
       <ion-list>
-        <ion-item lines="full">
-          <ion-icon slot="start" name="moon"></ion-icon>
-          <ion-icon slot="start" name="sunny"></ion-icon>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          </ion-avatar>
+          <!-- <ion-label>{{ creds.name }}</ion-label> -->
+          <ion-label>Naam gebruiker</ion-label>
+          <ion-label>functie gebruiker</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div class="userInfo">
+        <ion-item>
+          <ion-label>Uw notificaties</ion-label>
+          <ion-badge color="light">7</ion-badge>
+          <ion-icon slot="icon-only" :icon="notifications"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <!-- <ion-icon slot="start" name="moon"></ion-icon> -->
           <ion-label>Toggle Dark Theme</ion-label>
           <ion-toggle slot="end" @ionChange="setTheme($event)" v-model="selected"></ion-toggle>
         </ion-item>
-      </ion-list>
+
+        <ion-item>
+          <ion-label>Notification sound</ion-label>
+          <ion-icon :icon="radio"></ion-icon>
+        </ion-item>
+      </div>
+    </div>
+
+      <br>
+
+      <div class="userSettings">
+        <h3>User credentials</h3>
+        <ion-item>
+          <form class="credsOverview" >
+            <div>
+              <label for="email">Your email:</label>
+              <input type="text" placeholder="E-mail" v-model="email" readonly>
+            </div>
+            <div>
+              <label for="password">Change your password:</label>
+              <input type="password" placeholder="Password" v-model="password" readonly>
+            </div>
+            <div>
+              <label for="password">Repeat password:</label>
+              <input type="password" placeholder="Password" v-model="password" readonly>
+            </div>
+            <button type="submit">Login</button>
+          </form>
+        </ion-item>
+      </div>
 
     </div>
 </template>
 
 <script>
   import mixins from '/src/mixins/mixins.js'
-  import { add, close, create, trash } from 'ionicons/icons';
+  import { add, close, create, trash, notifications, radio} from 'ionicons/icons';
   import { IonLabel, IonList, IonItem, IonToggle } from '@ionic/vue';
-  import { ref } from 'vue';
 
     export default {
         name: "KnowledgeBase",
         components: { IonLabel, IonList, IonItem, IonToggle },
         setup() {
-          const toppings = ref([]);
             return {
                 add, 
                 close, 
                 create, 
                 trash, 
-                toppings
+                notifications, 
+                radio
             }
         },
         mixins: [mixins],
+        methods: {
+          // checkUser: function() {
+          //     localStorage.getItem()
+          // }
+          addSound: function() {
+            let audio = new Audio('file.mp3')
+            audio
+          }
+        }, 
+        computed: {
+          creds() {
+              return this.$store.state.creds;
+          },
+          loading() {
+              return this.$store.state.loadingStatus === 'notloading'
+          },
+          error() {
+              return this.$store.state.errors.length > 0;
+          },
+          errorList() {
+              return this.$store.state.errors;
+          }
+      }
     }
 </script>
 
@@ -66,15 +134,19 @@
         display: flex;
         flex-direction: row;
     }
-
-    ion-badge, div > p {
-        margin-right: 5px;
+    .userInfo {
+      margin: 0 50px;
     }
 
-    ion-searchbar {
-        width: 200px;
-        padding: 0;
-        margin: 0;
+    .userSettings {
+      margin: 0 20px;
+      border-top: 2px solid black;
+    }
+
+    form div{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
     }
 
 

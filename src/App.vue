@@ -105,6 +105,9 @@ export default defineComponent({
       --color-toolbar-background: white;
       --color-toolbar-text: black;
     }
+    h1, h2, h3 {
+      color: black;
+    }
   }
 
   @media (prefers-color-scheme: dark) {
@@ -112,12 +115,16 @@ export default defineComponent({
       --color-toolbar-background: black;
       --color-toolbar-text: white;
     }
+    h1, h2, h3 {
+      color: white;
+    }
   }
 
   ion-toolbar {
     --background: var(--color-toolbar-background);
     color: var(--color-toolbar-text);
   }
+
   .verticalScrollContainer {
     background: var(--color-toolbar-background);
   }

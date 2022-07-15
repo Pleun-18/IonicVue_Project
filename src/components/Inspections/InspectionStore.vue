@@ -131,6 +131,7 @@
             //Remove inspection-object from array
             deleteInspection(inspection) {
                 this.$store.commit('DELETE_INSPECTION', inspection);
+                // delete inspection
             }
         },
         computed: {
