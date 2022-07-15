@@ -5,7 +5,7 @@
       <TopHeader />
       <ClientLogin />
     </ion-page>
-    <ion-page v-if="isLoggedIn">
+    <ion-page v-if="isLoggedIn" :class="(mode === 'dark') ? 'dark' : 'light'">
       <TopHeader />
       <ion-router-outlet />
     </ion-page>
@@ -21,6 +21,7 @@ import { mapGetters, mapActions } from 'vuex'
 import ClientLogin from "./views/Login/ClientLogin.vue";
 
 export default defineComponent({
+  
   name: 'App',
   components: {
     IonApp,
@@ -28,6 +29,11 @@ export default defineComponent({
     TopHeader, 
     ClientLogin
   }, 
+  data() {
+    return {
+      mode: "dark"
+    }
+  },
   methods: {
     logout() {
      this.$store.dispatch('logout');
@@ -93,5 +99,29 @@ export default defineComponent({
   ion-tab-bar{
     --background: #00AAA2;
   }
+  
+  @media (prefers-color-scheme: light) {
+    :root {
+      --color-toolbar-background: white;
+      --color-toolbar-text: black;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-toolbar-background: black;
+      --color-toolbar-text: white;
+    }
+  }
+
+  ion-toolbar {
+    --background: var(--color-toolbar-background);
+    color: var(--color-toolbar-text);
+  }
+  .verticalScrollContainer {
+    background: var(--color-toolbar-background);
+  }
+
+  
 
 </style>

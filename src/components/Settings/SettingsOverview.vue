@@ -15,15 +15,13 @@
       </ion-header>
 
       <ion-list>
-    <ion-item>
-      <ion-label>Enable dark theme</ion-label>
-      <ion-toggle color="dark"
-        @ionChange="toppings.value.push($event.target.value)"
-        value="pepperoni"
-        :checked="toppings.indexOf('pepperoni') !== -1">
-      </ion-toggle>
-    </ion-item>
-  </ion-list>
+        <ion-item lines="full">
+          <ion-icon slot="start" name="moon"></ion-icon>
+          <ion-icon slot="start" name="sunny"></ion-icon>
+          <ion-label>Toggle Dark Theme</ion-label>
+          <ion-toggle slot="end" @change="setTheme($event)"></ion-toggle>
+        </ion-item>
+      </ion-list>
 
     </div>
 </template>
@@ -48,7 +46,6 @@
             }
         },
         mixins: [mixins],
-        
     }
 </script>
 

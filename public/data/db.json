@@ -154,7 +154,7 @@
       "email": "pleun@onlinesupporter.nl",
       "token": "admin123",
       "preferences": {
-        "light": true,
+        "mode": "light",
         "sound": {
           "on": true,
           "type": "./assets/ringtones/short.mp3"
@@ -168,7 +168,7 @@
       "email": "amjada@onlinesupporter.nl",
       "token": "admin321",
       "preferences": {
-        "light": false,
+        "mode": "light",
         "sound": {
           "on": true,
           "type": "./assets/ringtones/short.mp3"
