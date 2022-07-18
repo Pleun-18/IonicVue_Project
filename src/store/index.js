@@ -63,6 +63,8 @@ export const store = createStore({
         DELETE_INSPECTION(state, id){
             let index = state.inspections.findIndex(inspection => inspection.id == id);
             state.inspections.splice(index, 1);
+            axios.delete('http://localhost:3000/inspections/' + id);
+            console.log("Deleted Inspections" + id);
         },
         // mutations voor axios/REST finished inspections
         SET_FINISHED(state, payload) {
@@ -144,14 +146,14 @@ export const store = createStore({
                     })
             }, 1500);
         },
-        deleteInspection ({commit}, id) {
-            this.$http.delete('http://localhost:3000/inspections/' + id)
-                .then(() => {              
-                     commit('DELETE_INSPECTION', id);
-                     this.inspections.$remove(id);
-                    //  axios.delete('http://localhost:3000/inspections/' + id)
-                });
-        },
+        // deleteInspection ({commit}, id) {
+        //     this.$http.delete('http://localhost:3000/inspections/' + id)
+        //         .then(() => {              
+        //              commit('DELETE_INSPECTION', id);
+        //              this.inspections.$remove(id);
+        //              axios.delete('http://localhost:3000/inspections/' + id)
+        //         });
+        // },
         fetchFinished(context) {
             // 1. Set loading status
             context.commit('SET_LOADING_STATUS', 'loading');

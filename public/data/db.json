@@ -68,16 +68,6 @@
       "action": "No",
       "description": "hello there mate",
       "id": 7
-    },
-    {
-      "name": "damage",
-      "location": "Wousieraar 28",
-      "date": "2025-12-11",
-      "new": "yes",
-      "type": "Violence",
-      "action": "No",
-      "description": "JAJAJAAJ en gelijk had ie",
-      "id": 8
     }
   ],
   "finished": [
