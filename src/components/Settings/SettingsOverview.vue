@@ -21,8 +21,8 @@
             <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
           </ion-avatar>
           <!-- <ion-label>{{ creds.name }}</ion-label> -->
-          <ion-label>Naam gebruiker</ion-label>
-          <ion-label>functie gebruiker</ion-label>
+          <ion-label>{{  }}</ion-label>
+          <ion-label>Noob</ion-label>
         </ion-item>
       </ion-list>
 
@@ -64,7 +64,7 @@
               <label for="password">Repeat password:</label>
               <input type="password" placeholder="Password" v-model="password" readonly>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit">Change credentials</button>
           </form>
         </ion-item>
       </div>
@@ -80,6 +80,7 @@
     export default {
         name: "KnowledgeBase",
         components: { IonLabel, IonList, IonItem, IonToggle },
+        props: ['creds'],
         setup() {
             return {
                 add, 
@@ -99,21 +100,7 @@
             let audio = new Audio('file.mp3')
             audio
           }
-        }, 
-        computed: {
-          creds() {
-              return this.$store.state.creds;
-          },
-          loading() {
-              return this.$store.state.loadingStatus === 'notloading'
-          },
-          error() {
-              return this.$store.state.errors.length > 0;
-          },
-          errorList() {
-              return this.$store.state.errors;
-          }
-      }
+        }
     }
 </script>
 

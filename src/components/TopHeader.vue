@@ -15,7 +15,7 @@
                       <router-link to="/login" v-if="!isLoggedIn">
                         <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
                       </router-link>
-                      <a href="#" v-if="isLoggedIn" @click="logout">Logout</a> 
+                      <ion-icon href="#" slot="icon-only" v-if="isLoggedIn" @click="logout" :icon="personCircle"></ion-icon>
                     </section>
                 </ion-buttons>
                 <ion-title>

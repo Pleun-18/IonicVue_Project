@@ -8,8 +8,7 @@
       "new": true,
       "type": "Violence",
       "action": false,
-      "description": "Multiple broken windows...", 
-      "finished": false
+      "description": "Multiple broken windows..."
     },
     {
       "id": 2,
@@ -19,8 +18,7 @@
       "type": "wood rot",
       "action": true,
       "costs": 1700,
-      "comment": "Window(s) break easily",
-      "finished": false
+      "comment": "Window(s) break easily"
     },
     {
       "id": 3,
@@ -30,8 +28,7 @@
       "type": "cooling",
       "malfunction": "heater broken",
       "confirmed": true,
-      "comment": "heater needs repearing", 
-      "finished": false
+      "comment": "heater needs repearing"
     },
     {
       "id": 4,
@@ -41,8 +38,7 @@
       "performer": "Huurder",
       "type": "change",
       "description": "Change Window(s)",
-      "comment": "Window(s) break easily", 
-      "finished": false
+      "comment": "Window(s) break easily"
     },
     {
       "id": 5,
@@ -52,8 +48,7 @@
       "new": false,
       "type": "Willfully",
       "action": true,
-      "description": "Discussion with neighbours led to tree on roof", 
-      "finished": false
+      "description": "Discussion with neighbours led to tree on roof"
     },
     {
       "name": "modify",
@@ -62,7 +57,6 @@
       "performer": "owner",
       "description": "Really nothing",
       "comment": "Look better",
-      "finished": false,
       "id": 6
     },
     {
@@ -72,7 +66,6 @@
       "performer": "owner",
       "description": "Really nothing",
       "comment": "Look better",
-      "finished": false,
       "id": 7
     },
     {
@@ -82,7 +75,6 @@
       "performer": "owner",
       "description": "Really nothing",
       "comment": "Look better",
-      "finished": false,
       "id": 8
     }
   ],
@@ -92,7 +84,7 @@
       "name": "technical",
       "location": "De achterhoek 53",
       "date": "2022-02-21",
-      "finished": true,
+      "finished": "2022-04-17",
       "type": "cooling",
       "malfunction": "heater broken",
       "procedure": "../public/assets/procedure.pdf",
@@ -105,7 +97,7 @@
       "name": "modify",
       "location": "Bakkersweg 98",
       "date": "2022-02-26",
-      "finished": true,
+      "finished": "2022-04-17",
       "procedure": "../public/assets/procedure.pdf",
       "performer": "Huurder",
       "action": "change",
@@ -117,7 +109,7 @@
       "name": "damage",
       "location": "De voorhoek 35",
       "date": "2022-03-17",
-      "finished": true,
+      "finished": "2022-04-17",
       "new": false,
       "type": "Willfully",
       "action": true,

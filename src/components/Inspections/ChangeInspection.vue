@@ -1,36 +1,50 @@
 <template>
   <transition name="modal-fade">
     <div class="modal-backdrop">
-      <div class="modal"
+      <form action="http://localhost:3000/finished"
+        class="modal"
         role="dialog"
         aria-labelledby="modalTitle"
         aria-describedby="modalDescription">
-        <div class="heading" style="border-bottom: 2px solid grey;">
+        <div class="heading">
           <button type="button" class="btn-close" @click="close" aria-label="Close modal">
             x
           </button>
-           <h2>{{ inspection.location }}</h2>
-           <p>{{ inspection.date }}</p>
+           <h2>{{ finished.location }}</h2>
+           <div style="border-bottom: 2px solid grey;">
+            <div>
+              <p style="font-weight: 600">Start: </p><br>
+              <p>{{ finished.date }}</p>
+            </div>
+            <div>
+              <p style="font-weight: 600">End: </p>
+              <input type="text" id="endDate" name="endDate" size="10" :placeholder="finished.finished">
+            </div>
+           </div>
         </div>
         <div class="badges">
           <div>
             <p>Inspection type:</p>
-            <ion-badge>{{ inspection.name }}</ion-badge>
+            <input type="text" id="type" name="endDate" size="10" :value="finished.name">
           </div>
           <div>
             <p>Cause of:</p>
-            <ion-badge>{{ inspection.type }}</ion-badge>
+            <input type="text" id="cause" name="endDate" size="10" :value="finished.type">
           </div>
         </div>
         <div class="describeComment">
           <h3>Description: </h3>
-          <p>{{ inspection.description }}</p>
+          <textarea type="text" id="description" name="endDate" rows="2" cols="30" :value="finished.description"></textarea>
         </div>
         <div>
           <h3>Comments: </h3>
-          <p>{{ inspection.comment }}</p>
+          <textarea type="text" id="comment" name="endDate" rows="2" cols="30" :value="finished.comment"></textarea>
         </div>
-      </div>
+        <div>
+          <input type="submit" value="Add inspection">
+          <button @submit="handleSubmit()" type="submit" id="btnSubmit" class="btn-submit"></button>
+        </div>
+      </form>
     </div>
   </transition>
 </template>
@@ -40,8 +54,8 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'ShowInspection',
-    props: ['inspection'],
+    name: 'ChangeInspection',
+    props: ['finished'],
     methods: {
       close() {
         this.$emit('close');
@@ -54,6 +68,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+  input {
+    font-size: 14px;
+  }
 
   h3 {
     line-height: 0;
@@ -70,8 +88,21 @@ export default defineComponent({
     padding: 0;
   }
 
+  .heading {
+    margin: 0;
+  }
+
   .heading p {
-    line-height: 0;
+    margin: 0;
+  }
+
+  .heading div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .heading div div {
+    margin-right: 20px;
   }
 
   .badges p {
@@ -146,6 +177,9 @@ export default defineComponent({
     font-weight: bold;
     color: #4AAE9B;
     background: transparent;
+    position: absolute;
+    margin-left: 250px;
+    margin-right: 0;
   }
 
   .modal-fade-enter,

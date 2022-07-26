@@ -35,25 +35,24 @@
         <!--List with finished inspection data-->
         <ion-list class="list-group" v-if="finished && finished.length">
             <ion-item class="list-group-item"
-                @click="selectFinished(finshed.id)"
                 v-for="finished in finished"
                 :key="finished.location">
                 <!-- <ion-checkbox slot="start"></ion-checkbox> -->
-                <ion-label @click="showModal()" type="button" class="btn">
-                    <div class="labelInfo">
+                <ion-label @click="selectFinished(finished.id)" type="button" class="btn">
+                    <div class="labelInfo"> 
                         <ion-badge color="success" slot="end"> {{ finished.name }} </ion-badge>
                         <p> {{ finished.date }} </p>
                     </div>
                     <h1> {{ finished.location }} </h1>
                 </ion-label>
-                <ion-fab-button>
+                <ion-fab-button @click="showModal()">
                     <ion-icon :icon="create" style="color: white;"></ion-icon>
                 </ion-fab-button>
             </ion-item>
         </ion-list>
 
 
-        <!-- <ModalList v-if="selectedInspection" :inspection="selectedInspection" v-show="isModalVisible" @close="closeModal"></ModalList> -->
+        <ChangeInspection v-if="selectedFinished" :finished="selectedFinished" v-show="isModalVisible" @close="closeModal"></ChangeInspection>
 
     </div>
 </template>
@@ -61,7 +60,7 @@
 <script>
   import mixins from '/src/mixins/mixins.js'
   import { add, close, create, trash } from 'ionicons/icons';
-//   import ModalList from '../components/ModalList';
+  import ChangeInspection from '../Inspections/ChangeInspection';
 //   import ActionButton from '../components/ActionButton.vue'
   import { IonFabButton } from '@ionic/vue';
 
@@ -76,7 +75,7 @@
             }
         },
         mixins: [mixins],
-        components: { IonFabButton },
+        components: { ChangeInspection, IonFabButton },
         data() {
             return {
                 sortedInspections: [], 
@@ -97,7 +96,7 @@
             filteredInspections() {
                 console.log(this.inspections);
                 if (!this.inspections) return;
-                this.sortedInspections = [...this.finished];
+                this.sortedInspections = [...this.inspection];
                 console.log("these are sorted: " + this.sortedInspections);
                 this.sortedInspections.sort(function (a, b) {
                 let dateA = new Date(a.date);
@@ -110,6 +109,7 @@
             },
             closeModal() {
                 this.isModalVisible = false;
+                console.log(this.isModalVisible);
             },
             //select the inspection on-clicking
             selectFinished(finishedId) {

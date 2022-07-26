@@ -82,21 +82,12 @@ export default {
       }
     },
     methods: {
-      handleFormSubmit: function(event) {
+      handleSubmit: function(event) {
         event.preventDefault();
-
         const data = new FormData(event.target);
-
-        console.log("FormData = " + data);
-        
-        const formJSON = Object.fromEntries(data.entries());
-
-        // for multi-selects, we need special handling
-        formJSON.snacks = data.getAll('input');
-        
-        const results = document.querySelector('form');
-        results.innerText = JSON.stringify(formJSON, null, 2);
-      }
+        const value = Object.fromEntries(data.entries());
+        console.log({ value });
+      }, 
       
     }, 
     computed: {

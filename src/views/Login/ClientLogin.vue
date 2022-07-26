@@ -23,6 +23,7 @@ import { IonHeader, IonTitle, IonToolbar } from '@ionic/vue';
 import mixins from '/src/mixins/mixins.js'
 import { close } from 'ionicons/icons';
 import { defineComponent } from 'vue';
+// import ThemeService from '../../services/theme.service'
 
 export default defineComponent({
   name: 'ClientLogin',
@@ -39,35 +40,15 @@ export default defineComponent({
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      registeredUser: []
     }
   },
   beforeMount() {
     this.fetchCreds();
-  },
-  methods: {
-    fetchCreds() {
-        this.$store.dispatch('fetchCreds')
-    },
-    login() {
-      console.log(this.creds)
-      let checkCreds = this.creds.find(o => o.email === this.email && o.token === this.password);
-      if (checkCreds) {
-        this.$store.dispatch("login", {
-          email: this.email,
-          password: this.password
-        }).then(() => {
-          this.$router.push("/")
-        });
-      } else {
-        alert("Invalid credentials");
-        console.log(this.creds);
-      } 
-    }
   }, 
   computed: {
       creds() {
-          console.log(this.$store.state.creds);
           return this.$store.state.creds;
       },
       loading() {
@@ -79,6 +60,29 @@ export default defineComponent({
       errorList() {
           return this.$store.state.errors;
       }
+  },
+  methods: {
+    fetchCreds() {
+        this.$store.dispatch('fetchCreds')
+    },
+    login() {
+      let checkCreds = this.creds.find(o => o.email === this.email && o.password === this.password);
+      this.$store.dispatch("login", true);
+      console.log(checkCreds);
+      if (checkCreds) {
+        this.$store.dispatch("login", {
+          email: this.email,
+          password: this.password
+        }).then(() => {
+          // ThemeService.setTheme(checkCreds.preferences.mode)
+          localStorage.setItem("currentUser", checkCreds)
+          document.body.setAttribute('color-theme', checkCreds.preferences.mode)
+          this.$router.push("/")
+        });
+      } else {
+        alert("Invalid credentials");
+      } 
+    }
   }
 });
 

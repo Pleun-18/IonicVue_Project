@@ -16,7 +16,7 @@ const LOGOUT = "LOGOUT";
 export const store = createStore({
     state () {
         return {
-        isLoggedIn: !!localStorage.getItem("token"),
+        // isLoggedIn: !!localStorage.getItem("token"),
         counter: 0, 
         loadingStatus: 'notLoading', 
         inspections: [],
@@ -66,6 +66,12 @@ export const store = createStore({
             axios.delete('http://localhost:3000/inspections/' + id);
             console.log("Deleted Inspections" + id);
         },
+        CHANGE_INSPECTION(state, id){
+            let index = state.inspections.findIndex(inspection => inspection.id == id);
+            state.inspections.splice(index, 1);
+            axios.put('http://localhost:3000/inspections/' + id);
+            console.log("Changed Inspections" + id);
+        },
         // mutations voor axios/REST finished inspections
         SET_FINISHED(state, payload) {
             state.finished = payload;
@@ -89,24 +95,25 @@ export const store = createStore({
         // actions voor Login state
         login({ commit }) {
             commit(LOGIN); // show spinner
-              setTimeout(() => {
-                axios.get(url[3])
-                .then(result => {
-                    commit('SET_LOADING_STATUS', 'notloading');
-                    commit('LOGIN', result.data);
-                    console.log(result.data);
-                    console.log("login succes")
-                    commit(LOGIN_SUCCESS);
-                })
-                .catch(err => {
-                    console.log("error:  " + err);
-                })
-                }, 1000);
-          },
-          logout({ commit }) {
-            localStorage.removeItem("token");
-            commit(LOGOUT);
-          },
+                setTimeout(() => {
+                    axios.get(url[3])
+                    .then(result => {
+                        commit('SET_LOADING_STATUS', 'notloading');
+                        commit('LOGIN', result.data);
+                        commit('SET_CREDS', []);
+                        console.log("login succes")
+                        commit(LOGIN_SUCCESS);
+                    })
+                    .catch(err => {
+                        console.log("error:  " + err);
+                    })
+            }, 1000);
+        },
+        logout({ commit }) {
+        localStorage.removeItem("creds", [])
+        // localStorage.removeItem("token");
+        commit(LOGOUT);
+        },
         fetchCreds(context) {
             // 1. Set loading status
             context.commit('SET_LOADING_STATUS', 'loading');
@@ -116,11 +123,10 @@ export const store = createStore({
                     .then(result => {
                         context.commit('SET_LOADING_STATUS', 'notloading');
                         context.commit('SET_CREDS', result.data);
-                        console.log(result);
+                        console.log("Full fetch: " + result);
                     })
                     .catch(err => {
                         context.commit('SET_LOADING_STATUS', 'notloading');
-                        context.commit('SET_CREDS', []);
                         context.commit('ADD_ERROR', err);
                         console.log("error:  " + err);
                     })
@@ -146,14 +152,26 @@ export const store = createStore({
                     })
             }, 1500);
         },
-        // deleteInspection ({commit}, id) {
-        //     this.$http.delete('http://localhost:3000/inspections/' + id)
-        //         .then(() => {              
-        //              commit('DELETE_INSPECTION', id);
-        //              this.inspections.$remove(id);
-        //              axios.delete('http://localhost:3000/inspections/' + id)
-        //         });
-        // },
+        // actions voor de fetch inspections API
+        changeInspection(context) {
+            // 1. Set loading status
+            context.commit('SET_LOADING_STATUS', 'loading');
+            // 2. Make http-request - optional you can simulate a delay by wrapping it in a setTimeOut
+            setTimeout(() => {
+                axios.put(url[0])
+                    .then(result => {
+                        context.commit('SET_LOADING_STATUS', 'notloading');
+                        context.commit('SET_INSPECTIONS', result.data);
+                        console.log("ChangeResult: " + result);
+                    })
+                    .catch(err => {
+                        context.commit('SET_LOADING_STATUS', 'notloading');
+                        context.commit('SET_INSPECTIONS', []);
+                        context.commit('ADD_ERROR', err);
+                        console.log("error:  " + err);
+                    })
+            }, 1500);
+        },
         fetchFinished(context) {
             // 1. Set loading status
             context.commit('SET_LOADING_STATUS', 'loading');
@@ -191,12 +209,6 @@ export const store = createStore({
                         console.log("error:  " + err);
                     })
             }, 1500);
-        },
-        clearInspections(context) {
-            context.commit('CLEAR_INSPECTIONS')
-        }, 
-        clearFinished(context) {
-            context.commit('CLEAR_FINISHED')
         }
     }
 })

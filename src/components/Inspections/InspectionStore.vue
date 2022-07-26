@@ -37,7 +37,7 @@
         </div>
 
         <!--List with inspection data-->
-        <ion-list class="list-group" v-if="inspections && inspections.length">
+        <ion-list class="list-group" v-if="inspections && inspections.length && !inspections.finished">
             <ion-item class="list-group-item" v-for="inspection in inspections" :key="inspection.location">
                 <!-- <ion-checkbox slot="start"></ion-checkbox> -->
                 <ion-label @click="selectInspection(inspection.id), showModal()" type="button" class="btn">
@@ -130,23 +130,17 @@
             },
             //Remove inspection-object from array
             deleteInspection(inspection) {
-                this.$store.commit('DELETE_INSPECTION', inspection);
-                // delete inspection
+                let confirm = confirm("Do you really want to delete?")
+                if (confirm === true) {
+                    this.$store.commit('DELETE_INSPECTION', inspection);
+                    // delete inspection
+                }
             }
         },
         computed: {
             inspections() {
                 return this.$store.state.inspections;
             },
-            loading() {
-                return this.$store.state.loadingStatus === 'notloading'
-            },
-            error() {
-                return this.$store.state.errors.length > 0;
-            },
-            errorList() {
-                return this.$store.state.errors;
-            }, 
             selectedInspection() {
                 console.log('Inspection selected')
                 return {

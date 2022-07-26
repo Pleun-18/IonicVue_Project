@@ -14,12 +14,12 @@ class ThemeService {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
     // Listen for changes to the prefers-color-scheme media query
-    prefersDark.addListener((e) => checkToggle(e.matches));
+    prefersDark.addEventListener((e) => checkToggle(e.matches));
 
     // Called when the app loads
-    function loadApp() {
-      checkToggle(prefersDark.matches);
-    }
+    // function loadApp() {
+    //   checkToggle(prefersDark.matches);
+    // }
 
     // Called by the media query to check/uncheck the toggle
     function checkToggle(shouldCheck) {

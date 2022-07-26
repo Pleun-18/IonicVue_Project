@@ -68,7 +68,7 @@ export default defineComponent({
 
   h3 {
     font-size: 16px;
-    line-height: 1.4;
+    line-height: 1.2;
     text-align: left;
   }
 
@@ -77,6 +77,11 @@ export default defineComponent({
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     line-height: 1.4;
+  }
+
+  input {
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: unset;
   }
 
   #container {
