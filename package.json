@@ -3,13 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 8008",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.22.0",
     "@capacitor/app": "1.1.1",
     "@capacitor/core": "3.5.0",
     "@capacitor/haptics": "1.1.4",
@@ -17,10 +18,14 @@
     "@capacitor/status-bar": "1.0.8",
     "@ionic/vue": "^6.0.0",
     "@ionic/vue-router": "^6.0.0",
+    "axios": "^0.27.2",
     "core-js": "^3.6.5",
     "json-server": "^0.17.0",
+    "vee-validate": "^4.5.11",
     "vue": "^3.2.21",
-    "vue-router": "^4.0.12"
+    "vue-axios": "^3.4.1",
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@capacitor/cli": "3.5.0",
@@ -29,7 +34,7 @@
     "@vue/cli-plugin-eslint": "~5.0.0-rc.1",
     "@vue/cli-plugin-router": "~5.0.0-rc.1",
     "@vue/cli-plugin-unit-jest": "~5.0.0-rc.1",
-    "@vue/cli-service": "~5.0.0-rc.1",
+    "@vue/cli-service": "5.0.4",
     "@vue/test-utils": "^2.0.0-rc.16",
     "@vue/vue3-jest": "^27.0.0-alpha.3",
     "babel-jest": "^27.3.1",

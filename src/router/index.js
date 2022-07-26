@@ -1,16 +1,28 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 // import { RouteRecordRaw } from 'vue-router';
 import TabsPage from '../views/TabsPage.vue'
-// import { Service } from './service';
 
 const routes = [
   {
+    path: '/login',
+    component: () => import('@/views/Login/ClientLogin.vue'),
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: '/tabs/tab1',
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/tabs/',
     component: TabsPage,
+    meta: {
+      requiresAuth: true
+    },
     children: [
       {
         path: '',
@@ -27,11 +39,7 @@ const routes = [
       {
         path: 'tab3',
         component: () => import('@/views/InfoTab.vue')
-      },
-      {
-        path: 'assigned',
-        component: () => import('@/views/AssignedReports.vue')
-      }
+      }, 
     ]
   }
 ]
@@ -40,12 +48,5 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
-// let vue = new Vue({
-//   router,
-//   render: h => h(App)
-// }).$mount('#app')
-
-// Service.prototype.$router = vue.router;
 
 export default router

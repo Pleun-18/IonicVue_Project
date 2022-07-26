@@ -1,0 +1,190 @@
+{
+  "inspections": [
+    {
+      "id": 1,
+      "name": "damage",
+      "location": "Invanteriestraat 25",
+      "date": "2022-07-16",
+      "new": true,
+      "type": "Violence",
+      "action": false,
+      "description": "Multiple broken windows...", 
+      "finished": false
+    },
+    {
+      "id": 2,
+      "name": "maintenance",
+      "location": "Spookstad 17",
+      "date": "2022-01-29",
+      "type": "wood rot",
+      "action": true,
+      "costs": 1700,
+      "comment": "Window(s) break easily",
+      "finished": false
+    },
+    {
+      "id": 3,
+      "name": "technical",
+      "location": "De achterhoek 53",
+      "date": "2022-02-21",
+      "type": "cooling",
+      "malfunction": "heater broken",
+      "confirmed": true,
+      "comment": "heater needs repearing", 
+      "finished": false
+    },
+    {
+      "id": 4,
+      "name": "modify",
+      "location": "Bakkersweg 98",
+      "date": "2022-02-26",
+      "performer": "Huurder",
+      "type": "change",
+      "description": "Change Window(s)",
+      "comment": "Window(s) break easily", 
+      "finished": false
+    },
+    {
+      "id": 5,
+      "name": "damage",
+      "location": "De voorhoek 35",
+      "date": "2022-03-17",
+      "new": false,
+      "type": "Willfully",
+      "action": true,
+      "description": "Discussion with neighbours led to tree on roof", 
+      "finished": false
+    },
+    {
+      "name": "modify",
+      "location": "Jan tikkelstraat 93",
+      "date": "2022-06-16",
+      "performer": "owner",
+      "description": "Really nothing",
+      "comment": "Look better",
+      "finished": false,
+      "id": 6
+    },
+    {
+      "name": "modify",
+      "location": "Jan tikkelstraat 93",
+      "date": "2022-06-16",
+      "performer": "owner",
+      "description": "Really nothing",
+      "comment": "Look better",
+      "finished": false,
+      "id": 7
+    },
+    {
+      "name": "modify",
+      "location": "Jan tikkelstraat 93",
+      "date": "2022-06-16",
+      "performer": "owner",
+      "description": "Really nothing",
+      "comment": "Look better",
+      "finished": false,
+      "id": 8
+    }
+  ],
+  "finished": [
+    {
+      "id": 1,
+      "name": "technical",
+      "location": "De achterhoek 53",
+      "date": "2022-02-21",
+      "finished": true,
+      "type": "cooling",
+      "malfunction": "heater broken",
+      "procedure": "../public/assets/procedure.pdf",
+      "confirmed": true,
+      "description": "Because of a leak the house turned into a sauna...",
+      "comment": "heater needs repearing"
+    },
+    {
+      "id": 2,
+      "name": "modify",
+      "location": "Bakkersweg 98",
+      "date": "2022-02-26",
+      "finished": true,
+      "procedure": "../public/assets/procedure.pdf",
+      "performer": "Huurder",
+      "action": "change",
+      "description": "Change Window(s)",
+      "comment": "Window(s) break easily"
+    },
+    {
+      "id": 3,
+      "name": "damage",
+      "location": "De voorhoek 35",
+      "date": "2022-03-17",
+      "finished": true,
+      "new": false,
+      "type": "Willfully",
+      "action": true,
+      "description": "Discussion with neighbours led to tree on roof",
+      "comment": "Roof needs repearing"
+    }
+  ],
+  "pdfs": [
+    {
+      "id": 1,
+      "img": "./assets/pdfs/img/01.png",
+      "name": "Sustainable Real estate",
+      "description": "Sustainable Real Estate",
+      "src": "./assets/pdfs/01. Sustainable Real Estate.pdf"
+    },
+    {
+      "id": 2,
+      "img": "./assets/pdfs/img/02.png",
+      "name": "Handbook on residential property prices",
+      "description": "Handbook on residential property prices",
+      "src": "./assets/pdfs/02. Handbook on Residential Property Prices.pdf"
+    },
+    {
+      "id": 3,
+      "img": "./assets/pdfs/img/03.png",
+      "name": "Technical information",
+      "description": "Technical information",
+      "src": "./assets/pdfs/03. Technical information.pdf"
+    },
+    {
+      "id": 4,
+      "img": "./assets/pdfs/img/04.png",
+      "name": "The ultimate beginners guide",
+      "description": "The ultimate beginners guide",
+      "src": "./assets/pdfs/04. The Ultimate Beginners Guide.pdf"
+    }
+  ],
+  "creds": [
+    {
+      "id": 1,
+      "registered": false,
+      "avatar": "./assets/avatars/avatar1.jpg",
+      "name": "pleun",
+      "email": "pleun@onlinesupporter.nl",
+      "password": "admin123",
+      "preferences": {
+        "mode": "dark",
+        "sound": {
+          "on": true,
+          "type": "./assets/ringtones/short.mp3"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "registered": false,
+      "avatar": "./assets/avatars/avatar2.jpg",
+      "name": "Amjada",
+      "email": "amjada@onlinesupporter.nl",
+      "password": "admin321",
+      "preferences": {
+        "mode": "light",
+        "sound": {
+          "on": true,
+          "type": "./assets/ringtones/short.mp3"
+        }
+      }
+    }
+  ]
+}

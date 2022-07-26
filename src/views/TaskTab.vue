@@ -1,28 +1,41 @@
 <template>
   <ion-page>
-    
-    <TopHeader />
 
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tasks</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
-      <TaskOverview />
-    </ion-content>
+    <div id="container">
+      
+        <TaskOverview />
+
+    </div>
+
   </ion-page>
 </template>
 
 <script lang="js">
 import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import TaskOverview from '@/components/TaskOverview.vue';
-import TopHeader from '@/components/TopHeader'
+import { IonPage } from '@ionic/vue';
+import TaskOverview from '/src/components/TabViews/TaskOverview.vue'
 
 export default  defineComponent({
   name: 'Tab1Page',
-  components: { TopHeader, TaskOverview, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+  components: { IonPage, TaskOverview }
 });
 </script>
+
+<style scoped>
+
+  ion-icon{
+    font-size: 100px !important;
+    color: rgb(35, 35, 35);
+  }
+
+  .task_img{
+    margin: 10px !important;
+    cursor: pointer;
+  }
+
+  ion-col{
+    box-shadow: 0px 2px 6px gray;
+    border-radius: 5px;
+    text-align: center;
+  }
+</style>

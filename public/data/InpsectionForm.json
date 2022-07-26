@@ -1,0 +1,132 @@
+{
+    "damage": [
+        {
+            "id": 1,
+            "title": "Location"
+        },
+        {
+            "id": 2,
+            "title": "New damage"
+        },
+        {
+            "id": 3,
+            "title": "Type of damage",
+            "type": {
+                "1": "willfully",
+                "2": "waste",
+                "3": "violence",
+                "4": "normal use",
+                "5": "calamity",
+                "6": "other"
+            }
+        },
+        {
+            "id": 4,
+            "title": "Date"
+        },
+        {
+            "id": 5,
+            "title": "Action required"
+        },
+        {
+            "id": 6,
+            "title": "Description"
+        }
+    ],
+    "maintenance": [
+        {
+            "id": 7,
+            "title": "Location"
+        },
+        {
+            "id": 8,
+            "title": "Type of mainenance",
+            "type": {
+                "1": "painting",
+                "2": "wood rot",
+                "3": "electric",
+                "4": "piping",
+                "5": "glazing"
+            }
+        },
+        {
+            "id": 9,
+            "title": "Action required"
+        },
+        {
+            "id": 10,
+            "title": "Probable costs"
+        }
+    ],
+    "technical": [
+        {
+            "id": 11,
+            "title": "Location"
+        },
+        {
+            "id": 12,
+            "title": "Type of installation",
+            "type": {
+                "1": "cooling",
+                "2": "heating",
+                "3": "ventilation",
+                "4": "electrical",
+                "5": "security"
+            }
+        },
+        {
+            "id": 13,
+            "title": "Reported malfunction >>"
+        },
+        {
+            "id": 14,
+            "title": "Test procedure"
+        },
+        {
+            "id": 15,
+            "title": "Confirmed"
+        },
+        {
+            "id": 16,
+            "title": "Comments"
+        }
+    ],
+    "modify": [
+        {
+            "id": 17,
+            "title": "Current situations and documented modification >>"
+        },
+        {
+            "id": 18,
+            "title": "Location found modification"
+        },
+        {
+            "id": 19,
+            "title": "Carried out by",
+            "type": {
+                "1": "tenant",
+                "2": "contractor",
+                "3": "unknown"
+            }
+        },
+        {
+            "id": 20,
+            "title": "Description modification"
+        },
+        {
+            "id": 21,
+            "title": "Required action",
+            "type": {
+                "1": "accept",
+                "2": "painting",
+                "3": "remove",
+                "4": "change",
+                "5": "approve by"
+            }
+        },
+        {
+            "id": 22,
+            "title": "Comments"
+        }
+    ]
+}
